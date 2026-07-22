@@ -59,6 +59,19 @@ class UserResponse(BaseModel):
     class Config:
         from_attributes = True
 
+# Verification & OTP Schemas
+class OTPRequest(BaseModel):
+    email: EmailStr
+
+class OTPVerify(BaseModel):
+    email: EmailStr
+    code: str
+
+class IdentityVerifyRequest(BaseModel):
+    document_type: str # student_id, govt_id, passport
+    id_number: str
+    college_or_company: Optional[str] = None
+
 # Lifestyle Preferences Schemas
 class LifestylePreferenceSchema(BaseModel):
     food_pref: str = "any"

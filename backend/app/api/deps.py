@@ -40,8 +40,8 @@ def check_role(required_roles: list[str]):
         return current_user
     return role_checker
 
-# Predefined role dependencies
-get_admin_user = Depends(check_role(["admin"]))
-get_moderator_user = Depends(check_role(["admin", "moderator"]))
-get_owner_user = Depends(check_role(["admin", "moderator", "owner"]))
-get_active_user = Depends(check_role(["admin", "moderator", "owner", "user"]))
+# Predefined role dependencies (returns the callable role_checker function)
+get_admin_user = check_role(["admin"])
+get_moderator_user = check_role(["admin", "moderator"])
+get_owner_user = check_role(["admin", "moderator", "owner"])
+get_active_user = check_role(["admin", "moderator", "owner", "user"])

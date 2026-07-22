@@ -63,6 +63,13 @@ header {
   text-decoration: none;
 }
 
+.logo-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
 .logo-badge {
   background: var(--primary);
   color: white;
@@ -126,6 +133,28 @@ nav a:hover {
 .btn-secondary:hover {
   background-color: var(--neutral-100);
   transform: translateY(-2px);
+}
+
+.btn-google {
+  background-color: white;
+  color: var(--neutral-800);
+  border: 1px solid var(--neutral-200);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-google:hover {
+  background-color: var(--neutral-50);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-google img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
 }
 
 /* Hero Section */

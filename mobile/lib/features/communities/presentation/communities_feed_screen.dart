@@ -20,7 +20,17 @@ class _CommunitiesFeedScreenState extends ConsumerState<CommunitiesFeedScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Cohabio Communities', style: TextStyle(fontWeight: FontWeight.bold)),
+        title: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.asset('assets/images/logo.png', width: 28, height: 28, fit: BoxFit.contain, errorBuilder: (_, __, ___) => const Icon(Icons.people)),
+            ),
+            const SizedBox(width: 10),
+            const Text('Communities', style: TextStyle(fontWeight: FontWeight.bold)),
+          ],
+        ),
         backgroundColor: Colors.white,
         elevation: 0.5,
         foregroundColor: Colors.black,

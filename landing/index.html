@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cohabio — Find Your People. Find Your Place.</title>
   <meta name="description" content="Cohabio is a community-first AI relocation platform for students and young professionals. Find verified roommates, local communities, housing, and AI relocation assistance.">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +17,7 @@
   <!-- Glassmorphism Header -->
   <header>
     <a href="#" class="logo">
-      <div class="logo-badge">C</div>
+      <img src="favicon.ico" alt="Cohabio Logo" class="logo-icon">
       <span>Cohabio</span>
     </a>
     <nav>
@@ -24,7 +26,13 @@
       <a href="#ai">AI Assistant</a>
       <a href="#waitlist">Waitlist</a>
     </nav>
-    <a href="#waitlist" class="btn btn-primary">Join Waitlist</a>
+    <div style="display: flex; gap: 0.75rem; align-items: center;">
+      <button onclick="handleGoogleSignIn()" class="btn btn-google">
+        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
+        Sign In
+      </button>
+      <a href="#waitlist" class="btn btn-primary">Join Waitlist</a>
+    </div>
   </header>
 
   <!-- Hero Section -->
@@ -35,7 +43,10 @@
     
     <div class="hero-actions">
       <a href="#waitlist" class="btn btn-primary" style="padding: 1rem 2rem; font-size: 1.1rem;">Get Early Access</a>
-      <a href="#features" class="btn btn-secondary" style="padding: 1rem 2rem; font-size: 1.1rem;">Explore Platform</a>
+      <button onclick="handleGoogleSignIn()" class="btn btn-google" style="padding: 1rem 2rem; font-size: 1.1rem;">
+        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
+        Sign in with Google
+      </button>
     </div>
 
     <!-- App Interactive Mockup Preview -->

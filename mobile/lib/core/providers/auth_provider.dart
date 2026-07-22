@@ -126,6 +126,49 @@ class AuthNotifier extends StateNotifier<AuthState> {
     await _storage.delete(key: "user_role");
     state = AuthState(isAuthenticated: false);
   }
+
+  /// Google Sign-In: sends Google profile data to backend /auth/google
+  /// which creates or retrieves the user account and returns JWT tokens.
+  Future<bool> loginWithGoogle({
+    required String email,
+    String? name,
+    String? picture,
+  }) async {
+    state = state.copyWith(isLoading: true);
+    try {
+      final response = await apiClient.post("/auth/google", data: {
+        "email": email,
+        "name": name ?? email.split("@")[0],
+        "picture": picture,
+      });
+
+      if (response.statusCode == 200) {
+        final accessToken = response.data["access_token"];
+        final refreshToken = response.data["refresh_token"];
+        final userId = response.data["user_id"];
+        final role = response.data["role"];
+
+        await _storage.write(key: "access_token", value: accessToken);
+        await _storage.write(key: "refresh_token", value: refreshToken);
+        await _storage.write(key: "user_id", value: userId);
+        await _storage.write(key: "user_role", value: role);
+
+        state = AuthState(
+          isAuthenticated: true,
+          isLoading: false,
+          role: role,
+          userId: userId,
+        );
+        return true;
+      }
+    } on DioException catch (e) {
+      final msg = e.response?.data["detail"] ?? "Google sign-in failed";
+      state = state.copyWith(isLoading: false, errorMessage: msg);
+    } catch (e) {
+      state = state.copyWith(isLoading: false, errorMessage: "Google sign-in error");
+    }
+    return false;
+  }
 }
 
 final authProvider = StateNotifierProvider<AuthNotifier, AuthState>((ref) {

@@ -306,3 +306,46 @@ class Waitlist(Base):
     current_city = Column(String(100), nullable=True)
     target_city = Column(String(100), nullable=False)
     created_at = Column(DateTime(timezone=True), default=datetime.utcnow, nullable=False)
+
+# Centralized Notification System Models
+class Notification(Base):
+    __tablename__ = "notifications"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    user_id = Column(UUID(as_uuid=True), ForeignKey('users.id', ondelete='CASCADE'), nullable=False, index=True)
+    type = Column(String(50), nullable=False) # MATCH, MATCH_REQUEST, MESSAGE, VERIFICATION, SECURITY, SYSTEM
+    title = Column(String(255), nullable=False)
+    message = Column(String, nullable=False)
+    is_read = Column(Boolean, default=False, nullable=False)
+    related_entity_id = Column(String(255), nullable=True)
+    deep_link = Column(String(255), nullable=True)
+    created_at = Column(DateTime(timezone=True), default=datetime.utcnow, nullable=False)
+
+    user = relationship("User", backref="notifications")
+
+class DeviceToken(Base):
+    __tablename__ = "device_tokens"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    user_id = Column(UUID(as_uuid=True), ForeignKey('users.id', ondelete='CASCADE'), nullable=False, index=True)
+    token = Column(String(500), nullable=False, unique=True)
+    platform = Column(String(50), default='android', nullable=False) # android, ios, web
+    is_active = Column(Boolean, default=True, nullable=False)
+    created_at = Column(DateTime(timezone=True), default=datetime.utcnow, nullable=False)
+    updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
+
+    user = relationship("User", backref="device_tokens")
+
+class NotificationPreference(Base):
+    __tablename__ = "notification_preferences"
+
+    user_id = Column(UUID(as_uuid=True), ForeignKey('users.id', ondelete='CASCADE'), primary_key=True)
+    email_enabled = Column(Boolean, default=True, nullable=False)
+    push_enabled = Column(Boolean, default=True, nullable=False)
+    match_alerts = Column(Boolean, default=True, nullable=False)
+    message_alerts = Column(Boolean, default=True, nullable=False)
+    verification_alerts = Column(Boolean, default=True, nullable=False)
+    system_alerts = Column(Boolean, default=True, nullable=False) # Security / System alerts cannot be disabled
+    updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
+
+    user = relationship("User", backref="notification_preference")

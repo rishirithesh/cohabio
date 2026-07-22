@@ -24,6 +24,14 @@ class Settings(BaseSettings):
     GEMINI_API_KEY: Optional[str] = "gemini-api-key-placeholder"
     REDIS_URL: Optional[str] = "redis://localhost:6379/0"
 
+    # SMTP Email Configuration (CoHabio Official Email)
+    SMTP_HOST: str = "smtp.gmail.com"
+    SMTP_PORT: int = 587
+    SMTP_USER: str = "mail.cohabio@gmail.com"
+    SMTP_PASSWORD: Optional[str] = None
+    SMTP_FROM_EMAIL: str = "mail.cohabio@gmail.com"
+    SMTP_FROM_NAME: str = "CoHabio"
+
     class Config:
         case_sensitive = True
         env_file = ".env"

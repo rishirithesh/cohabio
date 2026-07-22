@@ -173,9 +173,17 @@ def swipe_roommate(
         # Add participants
         db.execute(chat_participants.insert().values(room_id=chat_room.id, user_id=current_user.id))
         db.execute(chat_participants.insert().values(room_id=chat_room.id, user_id=target_user_id))
-        
         db.commit()
-        return {"status": "matched", "is_match": True, "room_id": chat_room.id}
+
+        # Dispatch match notification to both users
+        try:
+            from app.services.notification_service import NotificationService
+            NotificationService.notify_roommate_match(db, current_user.id, target_user_id, match.match_score)
+            NotificationService.notify_roommate_match(db, target_user_id, current_user.id, match.match_score)
+        except Exception as err:
+            print(f"Failed to dispatch match notification: {err}")
+
+        return {"status": "matched", "is_match": True, "chat_room_id": str(chat_room.id)}
     else:
         # If it was pending or something else, update to liked
         match.status = "liked"

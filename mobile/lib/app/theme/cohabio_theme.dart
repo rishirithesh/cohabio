@@ -28,12 +28,12 @@ class CohabioTheme {
         surface: surfaceLight,
       ),
       textTheme: GoogleFonts.interTextTheme().copyWith(
-        displayLarge: GoogleFonts.inter(fontSize: 32, fontWeight: FontWeight.extrabold, color: textDark),
+        displayLarge: GoogleFonts.inter(fontSize: 32, fontWeight: FontWeight.w800, color: textDark),
         headlineMedium: GoogleFonts.inter(fontSize: 24, fontWeight: FontWeight.bold, color: textDark),
         bodyLarge: GoogleFonts.inter(fontSize: 16, fontWeight: FontWeight.normal, color: textMutedLight),
         labelLarge: GoogleFonts.inter(fontSize: 14, fontWeight: FontWeight.w600, color: Colors.white),
       ),
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: surfaceLight,
         elevation: 0,
         shape: RoundedRectangleBorder(
@@ -73,12 +73,12 @@ class CohabioTheme {
         surface: surfaceDark,
       ),
       textTheme: GoogleFonts.interTextTheme(ThemeData.dark().textTheme).copyWith(
-        displayLarge: GoogleFonts.inter(fontSize: 32, fontWeight: FontWeight.extrabold, color: textLight),
+        displayLarge: GoogleFonts.inter(fontSize: 32, fontWeight: FontWeight.w800, color: textLight),
         headlineMedium: GoogleFonts.inter(fontSize: 24, fontWeight: FontWeight.bold, color: textLight),
         bodyLarge: GoogleFonts.inter(fontSize: 16, fontWeight: FontWeight.normal, color: textMutedDark),
         labelLarge: GoogleFonts.inter(fontSize: 14, fontWeight: FontWeight.w600, color: textDark),
       ),
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: surfaceDark,
         elevation: 0,
         shape: RoundedRectangleBorder(

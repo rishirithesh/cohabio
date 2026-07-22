@@ -9,7 +9,8 @@ from app.api.v1.endpoints import (
     relocation,
     events,
     admin,
-    waitlist
+    waitlist,
+    notifications
 )
 
 api_router = APIRouter()
@@ -24,3 +25,4 @@ api_router.include_router(relocation.router, prefix="/relocation", tags=["reloca
 api_router.include_router(events.router, prefix="/events", tags=["events"])
 api_router.include_router(admin.router, prefix="/admin", tags=["admin"])
 api_router.include_router(waitlist.router, prefix="/waitlist", tags=["waitlist"])
+api_router.include_router(notifications.router, prefix="/notifications", tags=["notifications"])

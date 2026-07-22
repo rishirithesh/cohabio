@@ -45,7 +45,17 @@ class _AiRelocationScreenState extends ConsumerState<AiRelocationScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('AI Relocation Assistant', style: TextStyle(fontWeight: FontWeight.bold)),
+        title: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.asset('assets/images/logo.png', width: 28, height: 28, fit: BoxFit.contain, errorBuilder: (_, __, ___) => const Icon(Icons.assistant)),
+            ),
+            const SizedBox(width: 10),
+            const Text('AI Relocation Guide', style: TextStyle(fontWeight: FontWeight.bold)),
+          ],
+        ),
         backgroundColor: Colors.white,
         elevation: 0.5,
         foregroundColor: Colors.black,

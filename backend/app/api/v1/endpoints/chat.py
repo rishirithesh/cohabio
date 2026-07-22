@@ -148,6 +148,19 @@ async def websocket_endpoint(websocket: WebSocket, room_id: uuid.UUID, token: st
                     "created_at": db_message.created_at.isoformat()
                 }
                 await manager.broadcast_to_room(db, room_id, user_id, broadcast_data)
+
+                # Dispatch notification to recipient participants
+                try:
+                    from app.services.notification_service import NotificationService
+                    participants = db.query(chat_participants).filter(
+                        and_(chat_participants.c.room_id == room_id, chat_participants.c.user_id != user_id)
+                    ).all()
+                    sender_prof = db.query(Profile).filter(Profile.user_id == user_id).first()
+                    sender_name = sender_prof.full_name if sender_prof else "User"
+                    for p in participants:
+                        NotificationService.notify_new_message(db, p.user_id, sender_name, content, str(room_id))
+                except Exception as err:
+                    print(f"Failed to dispatch message notification: {err}")
                 
             elif event_type == "typing":
                 broadcast_data = {

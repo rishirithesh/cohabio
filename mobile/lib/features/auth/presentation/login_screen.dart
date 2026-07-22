@@ -58,20 +58,22 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                width: 56,
-                height: 56,
-                decoration: BoxDecoration(
-                  color: CohabioTheme.primaryColor,
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child: const Center(
-                  child: Text(
-                    'C',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 28,
-                      fontWeight: FontWeight.w800,
+              ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: Image.asset(
+                  'assets/images/logo.png',
+                  width: 56,
+                  height: 56,
+                  fit: BoxFit.contain,
+                  errorBuilder: (context, error, stackTrace) => Container(
+                    width: 56,
+                    height: 56,
+                    decoration: BoxDecoration(
+                      color: CohabioTheme.primaryColor,
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: const Center(
+                      child: Text('C', style: TextStyle(color: Colors.white, fontSize: 28, fontWeight: FontWeight.bold)),
                     ),
                   ),
                 ),
@@ -111,6 +113,18 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 isLoading: authState.isLoading,
                 onPressed: _handleLogin,
               ),
+              // Divider with "or"
+              const SizedBox(height: 8),
+              Row(
+                children: const [
+                  Expanded(child: Divider()),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16),
+                    child: Text('or', style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w500)),
+                  ),
+                  Expanded(child: Divider()),
+                ],
+              ),
               const SizedBox(height: 16),
               OutlinedButton(
                 style: OutlinedButton.styleFrom(
@@ -118,19 +132,56 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(14),
                   ),
+                  side: const BorderSide(color: Color(0xFFE2E8F0)),
                 ),
-                onPressed: () {
-                  // Simulate Google login by requesting Google account
-                  ref.read(authProvider.notifier).login("student@cohabio.com", "Student@123").then((success) {
-                    if (success) widget.onLoginSuccess();
-                  });
+                onPressed: () async {
+                  // MVP Google Sign-In: prompt for Google email
+                  // In production, replace with google_sign_in package
+                  final emailController = TextEditingController();
+                  final result = await showDialog<String>(
+                    context: context,
+                    builder: (ctx) => AlertDialog(
+                      title: const Text('Sign in with Google'),
+                      content: TextField(
+                        controller: emailController,
+                        keyboardType: TextInputType.emailAddress,
+                        decoration: const InputDecoration(
+                          labelText: 'Your Google Email',
+                          hintText: 'name@gmail.com',
+                          prefixIcon: Icon(Icons.email_outlined),
+                        ),
+                      ),
+                      actions: [
+                        TextButton(onPressed: () => Navigator.pop(ctx), child: const Text('Cancel')),
+                        FilledButton(
+                          onPressed: () => Navigator.pop(ctx, emailController.text.trim()),
+                          child: const Text('Continue'),
+                        ),
+                      ],
+                    ),
+                  );
+
+                  if (result != null && result.isNotEmpty) {
+                    final success = await ref.read(authProvider.notifier).loginWithGoogle(email: result);
+                    if (success) {
+                      widget.onLoginSuccess();
+                    } else {
+                      final error = ref.read(authProvider).errorMessage ?? "Google sign-in failed.";
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(error)));
+                    }
+                  }
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Icon(Icons.g_mobiledata, size: 28),
-                    SizedBox(width: 8),
-                    Text('Continue with Google', style: TextStyle(fontWeight: FontWeight.w600)),
+                  children: [
+                    Image.network(
+                      'https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg',
+                      width: 20,
+                      height: 20,
+                      errorBuilder: (_, __, ___) => const Icon(Icons.g_mobiledata, size: 24),
+                    ),
+                    const SizedBox(width: 12),
+                    const Text('Continue with Google', style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15)),
                   ],
                 ),
               ),

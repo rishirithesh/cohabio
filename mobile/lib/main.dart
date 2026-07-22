@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:cohabio/app/theme/cohabio_theme.dart';
 import 'package:cohabio/features/auth/presentation/login_screen.dart';
@@ -5,6 +6,7 @@ import 'package:cohabio/features/profile/presentation/profile_onboarding_screen.
 import 'package:cohabio/features/communities/presentation/communities_feed_screen.dart';
 import 'package:cohabio/features/roommate_matching/presentation/roommate_swipe_screen.dart';
 import 'package:cohabio/features/ai_assistant/presentation/ai_relocation_screen.dart';
+import 'package:cohabio/features/notifications/presentation/notifications_screen.dart';
 
 void main() {
   runApp(const ProviderScope(child: CohabioApp()));
@@ -50,7 +52,7 @@ class _MainAppFlowState extends State<MainAppFlow> {
       case "home":
         return const AppDashboardNavigator();
       default:
-        return const LoginScreen(onLoginSuccess: null);
+        return LoginScreen(onLoginSuccess: () {});
     }
   }
 }
@@ -69,6 +71,7 @@ class _AppDashboardNavigatorState extends State<AppDashboardNavigator> {
     const CommunitiesFeedScreen(),
     const RoommateSwipeScreen(),
     const AiRelocationScreen(),
+    const NotificationsScreen(),
   ];
 
   @override
@@ -98,6 +101,11 @@ class _AppDashboardNavigatorState extends State<AppDashboardNavigator> {
             icon: Icon(Icons.assistant_outlined),
             activeIcon: Icon(Icons.assistant),
             label: 'AI Guide',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.notifications_outlined),
+            activeIcon: Icon(Icons.notifications),
+            label: 'Alerts',
           ),
         ],
       ),

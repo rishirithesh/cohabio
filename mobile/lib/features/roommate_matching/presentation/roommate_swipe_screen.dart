@@ -19,7 +19,17 @@ class _RoommateSwipeScreenState extends ConsumerState<RoommateSwipeScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Roommate Discovery', style: TextStyle(fontWeight: FontWeight.bold)),
+        title: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.asset('assets/images/logo.png', width: 28, height: 28, fit: BoxFit.contain, errorBuilder: (_, __, ___) => const Icon(Icons.search)),
+            ),
+            const SizedBox(width: 10),
+            const Text('Roommate Discovery', style: TextStyle(fontWeight: FontWeight.bold)),
+          ],
+        ),
         backgroundColor: Colors.white,
         elevation: 0.5,
         foregroundColor: Colors.black,

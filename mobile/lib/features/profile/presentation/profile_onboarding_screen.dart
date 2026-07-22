@@ -1,23 +1,107 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:cohabio/core/widgets/cohabio_ui.dart';
+import 'package:cohabio/core/providers/profile_provider.dart';
 
-class ProfileOnboardingScreen extends StatefulWidget {
+class ProfileOnboardingScreen extends ConsumerStatefulWidget {
   final VoidCallback onComplete;
 
   const ProfileOnboardingScreen({Key? key, required this.onComplete}) : super(key: key);
 
   @override
-  State<ProfileOnboardingScreen> createState() => _ProfileOnboardingScreenState();
+  ConsumerState<ProfileOnboardingScreen> createState() => _ProfileOnboardingScreenState();
 }
 
-class _ProfileOnboardingScreenState extends State<ProfileOnboardingScreen> {
-  final _nameController = TextEditingController(text: "Aravind Nair");
-  final _collegeController = TextEditingController(text: "PES University");
-  final _budgetController = TextEditingController(text: "12000");
+class _ProfileOnboardingScreenState extends ConsumerState<ProfileOnboardingScreen> {
+  final _nameController = TextEditingController();
+  final _collegeController = TextEditingController();
+  final _budgetController = TextEditingController();
   
-  String _foodPref = "Veg";
-  String _sleepSchedule = "Night Owl";
-  int _cleanliness = 4;
+  String _foodPref = "any";
+  String _sleepSchedule = "flexible";
+  int _cleanliness = 3;
+  bool _isLoading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ref.read(profileProvider.notifier).fetchProfile().then((_) {
+        final profileState = ref.read(profileProvider).value;
+        if (profileState != null) {
+          setState(() {
+            _nameController.text = profileState["full_name"] ?? "";
+            _collegeController.text = profileState["college"] ?? "";
+            _budgetController.text = (profileState["budget_max"] ?? 10000.0).toString();
+            
+            final lifestyle = profileState["lifestyle_preferences"];
+            if (lifestyle != null) {
+              _foodPref = lifestyle["food_pref"] ?? "any";
+              _sleepSchedule = lifestyle["sleep_schedule"] ?? "flexible";
+              _cleanliness = lifestyle["cleanliness_rating"] ?? 3;
+            }
+          });
+        }
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _collegeController.dispose();
+    _budgetController.dispose();
+    super.dispose();
+  }
+
+  Future<void> _handleSave() async {
+    final name = _nameController.text.trim();
+    final budgetText = _budgetController.text.trim();
+
+    if (name.isEmpty || budgetText.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Please enter your name and budget.')),
+      );
+      return;
+    }
+
+    final budget = double.tryParse(budgetText) ?? 10000.0;
+
+    setState(() => _isLoading = true);
+
+    final success = await ref.read(profileProvider.notifier).updateProfile({
+      "full_name": name,
+      "age": 22,
+      "gender": "Male",
+      "occupation": "Student",
+      "college": _collegeController.text.trim(),
+      "home_city": "Delhi",
+      "current_city": "Bangalore",
+      "budget_min": 0.00,
+      "budget_max": budget,
+      "bio": "Excited to relocate!",
+      "lifestyle": {
+        "food_pref": _foodPref,
+        "smoking": false,
+        "drinking": "socially",
+        "pets": "no",
+        "sleep_schedule": _sleepSchedule,
+        "work_schedule": "flexible",
+        "cleanliness_rating": _cleanliness,
+        "interests": ["Coding", "Gaming"]
+      }
+    });
+
+    setState(() => _isLoading = false);
+
+    if (success) {
+      widget.onComplete();
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Failed to update profile. Please try again.')),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,20 +147,20 @@ class _ProfileOnboardingScreenState extends State<ProfileOnboardingScreen> {
               children: [
                 CohabioChip(
                   label: 'Vegetarian',
-                  isSelected: _foodPref == "Veg",
-                  onTap: () => setState(() => _foodPref = "Veg"),
+                  isSelected: _foodPref == "vegetarian",
+                  onTap: () => setState(() => _foodPref = "vegetarian"),
                 ),
                 const SizedBox(width: 8),
                 CohabioChip(
                   label: 'Non-Vegetarian',
-                  isSelected: _foodPref == "Non-Veg",
-                  onTap: () => setState(() => _foodPref = "Non-Veg"),
+                  isSelected: _foodPref == "non-veg",
+                  onTap: () => setState(() => _foodPref = "non-veg"),
                 ),
                 const SizedBox(width: 8),
                 CohabioChip(
                   label: 'Vegan',
-                  isSelected: _foodPref == "Vegan",
-                  onTap: () => setState(() => _foodPref = "Vegan"),
+                  isSelected: _foodPref == "vegan",
+                  onTap: () => setState(() => _foodPref = "vegan"),
                 ),
               ],
             ),
@@ -87,14 +171,14 @@ class _ProfileOnboardingScreenState extends State<ProfileOnboardingScreen> {
               children: [
                 CohabioChip(
                   label: 'Early Bird',
-                  isSelected: _sleepSchedule == "Early Bird",
-                  onTap: () => setState(() => _sleepSchedule = "Early Bird"),
+                  isSelected: _sleepSchedule == "early",
+                  onTap: () => setState(() => _sleepSchedule = "early"),
                 ),
                 const SizedBox(width: 8),
                 CohabioChip(
                   label: 'Night Owl',
-                  isSelected: _sleepSchedule == "Night Owl",
-                  onTap: () => setState(() => _sleepSchedule = "Night Owl"),
+                  isSelected: _sleepSchedule == "night_owl",
+                  onTap: () => setState(() => _sleepSchedule = "night_owl"),
                 ),
               ],
             ),
@@ -111,7 +195,8 @@ class _ProfileOnboardingScreenState extends State<ProfileOnboardingScreen> {
             const SizedBox(height: 36),
             CohabioPrimaryButton(
               label: 'Save & Continue',
-              onPressed: widget.onComplete,
+              isLoading: _isLoading,
+              onPressed: _handleSave,
             ),
           ],
         ),

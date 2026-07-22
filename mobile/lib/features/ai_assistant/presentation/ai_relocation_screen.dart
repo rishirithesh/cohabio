@@ -1,52 +1,48 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:cohabio/core/widgets/cohabio_ui.dart';
+import 'package:cohabio/core/providers/ai_assistant_provider.dart';
 
-class AiRelocationScreen extends StatefulWidget {
+class AiRelocationScreen extends ConsumerStatefulWidget {
   const AiRelocationScreen({Key? key}) : super(key: key);
 
   @override
-  State<AiRelocationScreen> createState() => _AiRelocationScreenState();
+  ConsumerState<AiRelocationScreen> createState() => _AiRelocationScreenState();
 }
 
-class _AiRelocationScreenState extends State<AiRelocationScreen> {
+class _AiRelocationScreenState extends ConsumerState<AiRelocationScreen> {
   final _queryController = TextEditingController();
-  final List<Map<String, dynamic>> _messages = [
-    {
-      "isAi": true,
-      "text": "Hello! I am your Cohabio Relocation Assistant powered by Gemini. Ask me about neighborhoods, moving budgets, packing timelines, or target cities! Try: 'Moving to Bangalore with 15k rent budget'."
-    }
-  ];
-  bool _isLoading = false;
+  final _scrollController = ScrollController();
+
+  @override
+  void dispose() {
+    _queryController.dispose();
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   void _handleSend() {
     final query = _queryController.text.trim();
     if (query.isEmpty) return;
 
-    setState(() {
-      _messages.add({"isAi": false, "text": query});
-      _queryController.clear();
-      _isLoading = true;
-    });
-
-    // Simulate AI response logic
-    Future.delayed(const Duration(seconds: 1), () {
-      if (!mounted) return;
-      setState(() {
-        _isLoading = false;
-        _messages.add({
-          "isAi": true,
-          "text": "Based on your request, here are top areas in Bangalore:\n\n"
-              "1. **HSR Layout**: Excellent startup hub, PG rents average ₹10k - ₹15k. Highly connected.\n"
-              "2. **Koramangala**: Active social life, great for fresh graduates. Single room range ₹12k - ₹18k.\n"
-              "3. **Bellandur**: Closest to major IT parks, budget range ₹13k - ₹17k.\n\n"
-              "Would you like me to recommend matching roommates in these areas?"
-        });
-      });
+    _queryController.clear();
+    ref.read(aiAssistantProvider.notifier).sendQuery(query).then((_) {
+      // Scroll to bottom after response
+      if (_scrollController.hasClients) {
+        _scrollController.animateTo(
+          _scrollController.position.maxScrollExtent + 100,
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeOut,
+        );
+      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    final messages = ref.watch(aiAssistantProvider);
+    final notifier = ref.watch(aiAssistantProvider.notifier);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('AI Relocation Assistant', style: TextStyle(fontWeight: FontWeight.bold)),
@@ -58,11 +54,12 @@ class _AiRelocationScreenState extends State<AiRelocationScreen> {
         children: [
           Expanded(
             child: ListView.builder(
+              controller: _scrollController,
               padding: const EdgeInsets.all(16),
-              itemCount: _messages.length,
+              itemCount: messages.length,
               itemBuilder: (context, index) {
-                final msg = _messages[index];
-                final isAi = msg["isAi"];
+                final msg = messages[index];
+                final isAi = msg.isAi;
 
                 return Align(
                   alignment: isAi ? Alignment.centerLeft : Alignment.centerRight,
@@ -84,7 +81,7 @@ class _AiRelocationScreenState extends State<AiRelocationScreen> {
                       ),
                     ),
                     child: Text(
-                      msg["text"],
+                      msg.text,
                       style: TextStyle(
                         color: isAi ? Colors.black87 : Colors.white,
                         fontSize: 14,
@@ -96,7 +93,7 @@ class _AiRelocationScreenState extends State<AiRelocationScreen> {
               },
             ),
           ),
-          if (_isLoading)
+          if (notifier.isLoading)
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 8.0),
               child: SizedBox(
@@ -116,6 +113,7 @@ class _AiRelocationScreenState extends State<AiRelocationScreen> {
                 Expanded(
                   child: TextField(
                     controller: _queryController,
+                    onSubmitted: (_) => _handleSend(),
                     decoration: const InputDecoration(
                       hintText: 'Ask Cohabio AI relocation guide...',
                       border: InputBorder.none,

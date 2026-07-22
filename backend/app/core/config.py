@@ -12,7 +12,7 @@ class Settings(BaseSettings):
     POSTGRES_SERVER: str = "localhost"
     POSTGRES_USER: str = "postgres"
     POSTGRES_PASSWORD: str = "postgres"
-    POSTGRES_DB: str = "cohabio_db"
+    POSTGRES_DB: str = "cohabio"
     POSTGRES_PORT: str = "5432"
     DATABASE_URL: Optional[str] = None
 

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:cohabio/app/theme/cohabio_theme.dart';
 import 'package:cohabio/features/auth/presentation/login_screen.dart';
 import 'package:cohabio/features/profile/presentation/profile_onboarding_screen.dart';
@@ -7,7 +7,7 @@ import 'package:cohabio/features/roommate_matching/presentation/roommate_swipe_s
 import 'package:cohabio/features/ai_assistant/presentation/ai_relocation_screen.dart';
 
 void main() {
-  runApp(const CohabioApp());
+  runApp(const ProviderScope(child: CohabioApp()));
 }
 
 class CohabioApp extends StatelessWidget {

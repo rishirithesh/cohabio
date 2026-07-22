@@ -4,54 +4,57 @@ Cohabio is a community-first relocation & housing platform designed to assist st
 
 ---
 
-## 🏗️ Architecture & Blueprint
+## 🏗️ Technical Stack
 
-Cohabio adopts **Clean Architecture** patterns separated into:
-- **`mobile/`**: Flutter Mobile Application utilizing Riverpod for state management, GoRouter, and a tailored minimalist design system.
-- **`backend/`**: FastAPI high-performance Python backend managing WebSockets chat, compatibility calculations, and Gemini AI endpoints.
-- **`landing/`**: Premium, high-conversion landing waitlist website built with clean HTML/CSS design.
+- **Frontend**: Flutter (latest stable), Riverpod, GoRouter, Flutter Hooks, Dio, Flutter Secure Storage, Material 3.
+- **Backend**: FastAPI, Python 3.13+, SQLAlchemy, Pydantic v2, JWT Auth, WebSockets.
+- **Database**: PostgreSQL (Default Name: `cohabio`, user: `postgres`, password: `rishi` / configured via `.env`).
+- **AI Assistant**: Google Gemini API integration.
 
 ---
 
 ## 🚦 Getting Started
 
-### Prerequisites
-- Docker & Docker Compose
-- Flutter SDK (v3.0.0+)
-- Python 3.11+
+### 1. Database Setup & Seeding
+Ensure PostgreSQL is running locally on port 5432, then run:
+```bash
+python seed_data.py
+```
+This automatically connects, builds tables, and inserts all MVP demo records.
 
-### Backend & Database Setup
-1. Copy the environment variables template:
-   ```bash
-   cp .env.example .env
-   ```
-2. Build and run the infrastructure using Docker:
-   ```bash
-   docker-compose up --build -d
-   ```
-3. The API documentation will be available at [http://localhost:8000/docs](http://localhost:8000/docs).
+### 2. Launch FastAPI Server
+```bash
+cd backend
+pip install -r requirements.txt
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+```
+Swagger documentation is interactive at: [http://localhost:8000/docs](http://localhost:8000/docs).
 
-### Running the Mobile Client
-1. Navigate to the mobile directory:
-   ```bash
-   cd mobile
-   ```
-2. Fetch dependencies:
-   ```bash
-   flutter pub get
-   ```
-3. Launch on emulator/device:
-   ```bash
-   flutter run
-   ```
+### 3. Launch Flutter Application
+```bash
+cd mobile
+flutter pub get
+flutter run
+```
+
+### 4. Waitlist Landing Page
+Double click `landing/index.html` to open the marketing page. Waitlist submissions will save directly to your local database!
 
 ---
 
-## ⚙️ AI Matching Compatibility
-Roommates are matched dynamically using a 6-factor compatibility index:
-- **Budget Overlap** (25%)
-- **Cleanliness Ratings** (20%)
-- **Lifestyle & Sleep Schedules** (20%)
-- **Drinking & Smoking Habits** (15%)
-- **Dietary & Food Choices** (10%)
-- **Shared Interests & Affinity** (10%)
+## 🔑 Seeded Demo Credentials
+
+Use these logins to test specific user flows and permissions:
+
+- **Admin Account**
+  - **Email**: `admin@cohabio.com`
+  - **Password**: `Admin@123`
+- **Moderator Account**
+  - **Email**: `moderator@cohabio.com`
+  - **Password**: `Moderator@123`
+- **Student Account**
+  - **Email**: `student@cohabio.com`
+  - **Password**: `Student@123`
+- **Owner Account**
+  - **Email**: `owner@cohabio.com`
+  - **Password**: `Owner@123`

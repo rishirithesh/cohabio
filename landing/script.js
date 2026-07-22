@@ -10,7 +10,7 @@ document.getElementById('waitlistForm').addEventListener('submit', async (e) => 
   msgDiv.textContent = 'Submitting details to waitlist...';
 
   try {
-    const response = await fetch('/api/v1/waitlist', {
+    const response = await fetch('http://localhost:8000/api/v1/waitlist', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

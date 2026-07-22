@@ -15,10 +15,7 @@ class NotificationsScreen extends ConsumerWidget {
         title: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: Image.asset('assets/images/logo.png', width: 28, height: 28, fit: BoxFit.contain, errorBuilder: (_, __, ___) => const Icon(Icons.notifications)),
-            ),
+            const Icon(Icons.notifications_active, color: Color(0xFF16A34A)),
             const SizedBox(width: 10),
             const Text('Notification Center', style: TextStyle(fontWeight: FontWeight.bold)),
           ],

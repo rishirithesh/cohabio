@@ -1,4 +1,5 @@
 # Cohabio — Find Your People. Find Your Place.
+## Founder - Rishi Rithesh
 
 Cohabio is a community-first relocation & housing platform designed to assist students and young professionals moving to new cities. By establishing verified local communities, AI roommate compatibility algorithms, and relocation planning before the housing marketplace, Cohabio simplifies the journey of shifting to a new city.
 

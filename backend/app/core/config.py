@@ -1,3 +1,4 @@
+import os
 from pydantic_settings import BaseSettings
 from typing import Optional
 
@@ -21,7 +22,7 @@ class Settings(BaseSettings):
     SUPABASE_KEY: Optional[str] = "anon-key-placeholder"
 
     # AI & Services
-    GEMINI_API_KEY: Optional[str] = "gemini-api-key-placeholder"
+    GEMINI_API_KEY: Optional[str] = os.getenv("GEMINI_API_KEY", "gemini-api-key-placeholder")
     REDIS_URL: Optional[str] = "redis://localhost:6379/0"
 
     # SMTP Email Configuration (CoHabio Official Email)

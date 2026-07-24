@@ -8,7 +8,10 @@ from app.services.email_service import EmailService
 from app.schemas.schemas import UserSignup, UserLogin, Token, UserResponse, RefreshTokenRequest, OTPRequest, OTPVerify, IdentityVerifyRequest
 import random
 import uuid
+import os
 from datetime import datetime, timedelta
+from google.oauth2 import id_token
+from google.auth.transport import requests as google_requests
 
 router = APIRouter()
 
@@ -145,11 +148,31 @@ def refresh_token(data: RefreshTokenRequest, db: Session = Depends(get_db)):
 
 @router.post("/google", response_model=Token)
 def login_google(google_token: dict, db: Session = Depends(get_db)):
-    # Simulated Google authentication logic. Creates user if they don't exist.
-    email = google_token.get("email")
-    if not email:
-        raise HTTPException(status_code=400, detail="Google authentication failed - email not found")
+    # Validate the Google ID Token
+    token = google_token.get("token")
+    if not token:
+        raise HTTPException(status_code=400, detail="Google authentication failed - no token provided")
+    
+    # Using environment variable for Client ID, falling back to a dummy for development if missing
+    GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID", "YOUR_GOOGLE_WEB_CLIENT_ID")
+    
+    try:
+        idinfo = id_token.verify_oauth2_token(
+            token, google_requests.Request(), GOOGLE_CLIENT_ID
+        )
         
+        # ID token is valid. Extract user info.
+        email = idinfo.get("email")
+        name = idinfo.get("name", email.split("@")[0].capitalize())
+        picture = idinfo.get("picture")
+        
+        if not email:
+            raise ValueError("Token didn't contain an email.")
+            
+    except ValueError as e:
+        # Invalid token
+        raise HTTPException(status_code=401, detail=f"Invalid Google token: {str(e)}")
+
     user = db.query(User).filter(User.email == email).first()
     if not user:
         user = User(
@@ -163,9 +186,9 @@ def login_google(google_token: dict, db: Session = Depends(get_db)):
         db.flush()
         profile = Profile(
             user_id=user.id,
-            full_name=google_token.get("name", email.split("@")[0].capitalize()),
+            full_name=name,
             budget_max=10000.00,
-            avatar_url=google_token.get("picture"),
+            avatar_url=picture,
             verification_status="verified"
         )
         db.add(profile)

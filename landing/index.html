@@ -5,12 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cohabio — Find Your People. Find Your Place.</title>
   <meta name="description" content="Cohabio is a community-first AI relocation platform for students and young professionals. Find verified roommates, local communities, housing, and AI relocation assistance.">
+  <meta property="og:title" content="Cohabio — Find Your People. Find Your Place.">
+  <meta property="og:description" content="Community-first relocation & roommate matching app for students and young professionals.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Google Identity Services Web SDK -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
 
@@ -27,10 +33,22 @@
       <a href="#waitlist">Waitlist</a>
     </nav>
     <div style="display: flex; gap: 0.75rem; align-items: center;">
-      <button onclick="handleGoogleSignIn()" class="btn btn-google">
-        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
-        Sign In
-      </button>
+      <!-- Google Sign In Button Container -->
+      <div id="g_id_onload"
+           data-client_id="YOUR_GOOGLE_WEB_CLIENT_ID"
+           data-context="signin"
+           data-ux_mode="popup"
+           data-callback="handleGoogleCredentialResponse"
+           data-auto_prompt="false">
+      </div>
+      <div class="g_id_signin"
+           data-type="standard"
+           data-shape="rectangular"
+           data-theme="outline"
+           data-text="signin_with"
+           data-size="large"
+           data-logo_alignment="left">
+      </div>
       <a href="#waitlist" class="btn btn-primary">Join Waitlist</a>
     </div>
   </header>
@@ -43,9 +61,8 @@
     
     <div class="hero-actions">
       <a href="#waitlist" class="btn btn-primary" style="padding: 1rem 2rem; font-size: 1.1rem;">Get Early Access</a>
-      <button onclick="handleGoogleSignIn()" class="btn btn-google" style="padding: 1rem 2rem; font-size: 1.1rem;">
-        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
-        Sign in with Google
+      <button onclick="alert('Android App is currently in development/testing. Join the waitlist to be notified upon Google Play Store launch!');" class="btn btn-google" style="padding: 1rem 2rem; font-size: 1.1rem; border: 2px solid var(--neutral-300);">
+        📱 Download the App
       </button>
     </div>
 

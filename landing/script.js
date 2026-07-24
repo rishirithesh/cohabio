@@ -42,32 +42,36 @@ document.getElementById('waitlistForm').addEventListener('submit', async (e) => 
   }
 });
 
-async function handleGoogleSignIn() {
-  const email = prompt("Simulating Google Sign-In:\nPlease enter your Google Account Email:", "student@cohabio.com");
-  if (!email) return;
+// Real Google Identity Services Callback
+async function handleGoogleCredentialResponse(response) {
+  const jwtCredential = response.credential;
+  
+  if (!jwtCredential) {
+    alert("Google Sign-In failed: No credential received.");
+    return;
+  }
 
   try {
-    const response = await fetch('http://localhost:8000/api/v1/auth/google', {
+    const res = await fetch('http://localhost:8000/api/v1/auth/google', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        email: email,
-        name: email.split('@')[0].toUpperCase() + " (Google)",
-        picture: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80"
+        token: jwtCredential // Send the JWT to the backend for verification
       })
     });
 
-    if (response.ok) {
-      const data = await response.json();
-      alert(`Google Sign-In Successful!\n\nEmail: ${email}\nRole: ${data.role}\nUser ID: ${data.user_id}\n\nWelcome to Cohabio! 🚀`);
+    if (res.ok) {
+      const data = await res.json();
+      alert(`Welcome to Cohabio!\n\nSuccessfully authenticated via Google.\nRole: ${data.role}\n\nSince this is the landing page, we recommend downloading the mobile app for the full experience!`);
+      // Future: Redirect to web app dashboard if applicable
     } else {
-      const err = await response.json();
-      alert(`Google Sign-In Failed: ${err.detail || 'Error'}`);
+      const err = await res.json();
+      alert(`Authentication Failed: ${err.detail || 'Error verifying Google token.'}`);
     }
   } catch (error) {
     console.error("Google Sign-In connection failed:", error);
-    alert(`Google Sign-In Simulated Successfully!\n\nLogged in as: ${email}`);
+    alert(`Could not connect to the backend server.\nMake sure the backend is running at localhost:8000.`);
   }
 }

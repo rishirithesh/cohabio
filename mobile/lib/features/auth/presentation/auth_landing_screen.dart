@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:cohabio/app/theme/cohabio_theme.dart';
 import 'package:cohabio/core/providers/auth_provider.dart';
 
@@ -184,17 +185,41 @@ class AuthLandingScreen extends ConsumerWidget {
                 ElevatedButton.icon(
                   onPressed: authState.isLoading
                       ? null
-                      : () async {
-                          // Interactive Google OAuth login trigger
-                          final success = await ref.read(authProvider.notifier).loginWithGoogle(
-                                email: "student.google@cohabio.com",
-                                name: "Demo Google Student",
-                                picture: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150",
+                        : () async {
+                            try {
+                              // Initialize Google Sign-In
+                              // NOTE: In production, specify the serverClientId (Web Client ID) to receive an idToken
+                              final GoogleSignIn googleSignIn = GoogleSignIn(
+                                scopes: ['email', 'profile'],
                               );
-                          if (success && context.mounted) {
-                            context.go('/dashboard');
-                          }
-                        },
+                              
+                              final GoogleSignInAccount? account = await googleSignIn.signIn();
+                              if (account != null) {
+                                final GoogleSignInAuthentication auth = await account.authentication;
+                                
+                                if (auth.idToken != null) {
+                                  final success = await ref.read(authProvider.notifier).loginWithGoogle(
+                                        idToken: auth.idToken!,
+                                      );
+                                      
+                                  if (success && context.mounted) {
+                                    context.go('/dashboard');
+                                  }
+                                } else {
+                                  // Fallback for development if idToken fails
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(content: Text('Failed to retrieve Google Identity Token.')),
+                                  );
+                                }
+                              }
+                            } catch (error) {
+                              if (context.mounted) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Text('Google Sign-In Error: $error')),
+                                );
+                              }
+                            }
+                          },
                   icon: Container(
                     width: 24,
                     height: 24,

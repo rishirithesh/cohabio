@@ -238,16 +238,12 @@ class AuthNotifier extends StateNotifier<AuthState> {
   }
 
   Future<bool> loginWithGoogle({
-    required String email,
-    String? name,
-    String? picture,
+    required String idToken,
   }) async {
     state = state.copyWith(isLoading: true, errorMessage: null);
     try {
       final response = await apiClient.post("/auth/google", data: {
-        "email": email,
-        "name": name ?? email.split("@")[0],
-        "picture": picture,
+        "token": idToken,
       });
 
       if (response.statusCode == 200) {

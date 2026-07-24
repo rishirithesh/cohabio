@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:cohabio/core/providers/notification_provider.dart';
-import 'package:cohabio/core/widgets/cohabio_ui.dart';
 
 class NotificationsScreen extends ConsumerWidget {
   const NotificationsScreen({Key? key}) : super(key: key);

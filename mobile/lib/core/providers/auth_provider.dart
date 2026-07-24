@@ -9,6 +9,8 @@ class AuthState {
   final String? errorMessage;
   final String? role;
   final String? userId;
+  final String? pendingVerificationEmail;
+  final String? successMessage;
 
   AuthState({
     this.isAuthenticated = false,
@@ -16,6 +18,8 @@ class AuthState {
     this.errorMessage,
     this.role,
     this.userId,
+    this.pendingVerificationEmail,
+    this.successMessage,
   });
 
   AuthState copyWith({
@@ -24,6 +28,8 @@ class AuthState {
     String? errorMessage,
     String? role,
     String? userId,
+    String? pendingVerificationEmail,
+    String? successMessage,
   }) {
     return AuthState(
       isAuthenticated: isAuthenticated ?? this.isAuthenticated,
@@ -31,6 +37,8 @@ class AuthState {
       errorMessage: errorMessage,
       role: role ?? this.role,
       userId: userId ?? this.userId,
+      pendingVerificationEmail: pendingVerificationEmail ?? this.pendingVerificationEmail,
+      successMessage: successMessage,
     );
   }
 }
@@ -40,6 +48,14 @@ class AuthNotifier extends StateNotifier<AuthState> {
 
   AuthNotifier() : super(AuthState()) {
     tryAutoLogin();
+  }
+
+  void clearMessages() {
+    state = state.copyWith(errorMessage: null, successMessage: null);
+  }
+
+  void setPendingEmail(String email) {
+    state = state.copyWith(pendingVerificationEmail: email);
   }
 
   Future<void> tryAutoLogin() async {
@@ -61,7 +77,7 @@ class AuthNotifier extends StateNotifier<AuthState> {
   }
 
   Future<bool> login(String email, String password) async {
-    state = state.copyWith(isLoading: true);
+    state = state.copyWith(isLoading: true, errorMessage: null);
     try {
       final response = await apiClient.post("/auth/login", data: {
         "email": email,
@@ -91,13 +107,13 @@ class AuthNotifier extends StateNotifier<AuthState> {
       final msg = e.response?.data["detail"] ?? "Invalid email or password";
       state = state.copyWith(isLoading: false, errorMessage: msg);
     } catch (e) {
-      state = state.copyWith(isLoading: false, errorMessage: "An error occurred");
+      state = state.copyWith(isLoading: false, errorMessage: "An error occurred during login");
     }
     return false;
   }
 
   Future<bool> signup(String email, String password, String phone, String role) async {
-    state = state.copyWith(isLoading: true);
+    state = state.copyWith(isLoading: true, errorMessage: null);
     try {
       final response = await apiClient.post("/auth/signup", data: {
         "email": email,
@@ -107,14 +123,108 @@ class AuthNotifier extends StateNotifier<AuthState> {
       });
 
       if (response.statusCode == 200) {
-        state = state.copyWith(isLoading: false);
+        state = state.copyWith(
+          isLoading: false,
+          pendingVerificationEmail: email,
+          successMessage: "Account created! Verification code sent to $email.",
+        );
         return true;
       }
     } on DioException catch (e) {
-      final msg = e.response?.data["detail"] ?? "Signup failed. Email may be already taken.";
+      final msg = e.response?.data["detail"] ?? "Signup failed. Email may be already registered.";
       state = state.copyWith(isLoading: false, errorMessage: msg);
     } catch (e) {
-      state = state.copyWith(isLoading: false, errorMessage: "An error occurred");
+      state = state.copyWith(isLoading: false, errorMessage: "An error occurred during signup");
+    }
+    return false;
+  }
+
+  Future<bool> sendOtp(String email) async {
+    state = state.copyWith(isLoading: true, errorMessage: null);
+    try {
+      final response = await apiClient.post("/auth/send-otp", data: {"email": email});
+      if (response.statusCode == 200) {
+        state = state.copyWith(
+          isLoading: false,
+          pendingVerificationEmail: email,
+          successMessage: "Verification code sent to $email",
+        );
+        return true;
+      }
+    } on DioException catch (e) {
+      final msg = e.response?.data["detail"] ?? "Failed to send verification code.";
+      state = state.copyWith(isLoading: false, errorMessage: msg);
+    } catch (e) {
+      state = state.copyWith(isLoading: false, errorMessage: "Error sending OTP");
+    }
+    return false;
+  }
+
+  Future<bool> verifyOtp(String email, String code) async {
+    state = state.copyWith(isLoading: true, errorMessage: null);
+    try {
+      final response = await apiClient.post("/auth/verify-otp", data: {
+        "email": email,
+        "code": code,
+      });
+
+      if (response.statusCode == 200) {
+        state = state.copyWith(
+          isLoading: false,
+          successMessage: "Email verified successfully!",
+        );
+        return true;
+      }
+    } on DioException catch (e) {
+      final msg = e.response?.data["detail"] ?? "Invalid or expired verification code.";
+      state = state.copyWith(isLoading: false, errorMessage: msg);
+    } catch (e) {
+      state = state.copyWith(isLoading: false, errorMessage: "Error verifying OTP");
+    }
+    return false;
+  }
+
+  Future<bool> forgotPassword(String email) async {
+    state = state.copyWith(isLoading: true, errorMessage: null);
+    try {
+      final response = await apiClient.post("/auth/forgot-password", data: {"email": email});
+      if (response.statusCode == 200) {
+        state = state.copyWith(
+          isLoading: false,
+          pendingVerificationEmail: email,
+          successMessage: "Password reset instructions sent to $email.",
+        );
+        return true;
+      }
+    } on DioException catch (e) {
+      final msg = e.response?.data["detail"] ?? "Error processing password reset.";
+      state = state.copyWith(isLoading: false, errorMessage: msg);
+    } catch (e) {
+      state = state.copyWith(isLoading: false, errorMessage: "Error sending reset email");
+    }
+    return false;
+  }
+
+  Future<bool> verifyIdentity(String idNumber, String collegeOrCompany) async {
+    state = state.copyWith(isLoading: true, errorMessage: null);
+    try {
+      final response = await apiClient.post("/auth/verify-identity", data: {
+        "id_number": idNumber,
+        "college_or_company": collegeOrCompany,
+      });
+
+      if (response.statusCode == 200) {
+        state = state.copyWith(
+          isLoading: false,
+          successMessage: "Identity verification submitted successfully!",
+        );
+        return true;
+      }
+    } on DioException catch (e) {
+      final msg = e.response?.data["detail"] ?? "Identity verification failed.";
+      state = state.copyWith(isLoading: false, errorMessage: msg);
+    } catch (e) {
+      state = state.copyWith(isLoading: false, errorMessage: "Error submitting identity verification");
     }
     return false;
   }
@@ -127,14 +237,12 @@ class AuthNotifier extends StateNotifier<AuthState> {
     state = AuthState(isAuthenticated: false);
   }
 
-  /// Google Sign-In: sends Google profile data to backend /auth/google
-  /// which creates or retrieves the user account and returns JWT tokens.
   Future<bool> loginWithGoogle({
     required String email,
     String? name,
     String? picture,
   }) async {
-    state = state.copyWith(isLoading: true);
+    state = state.copyWith(isLoading: true, errorMessage: null);
     try {
       final response = await apiClient.post("/auth/google", data: {
         "email": email,
@@ -174,3 +282,4 @@ class AuthNotifier extends StateNotifier<AuthState> {
 final authProvider = StateNotifierProvider<AuthNotifier, AuthState>((ref) {
   return AuthNotifier();
 });
+

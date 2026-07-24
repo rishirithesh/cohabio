@@ -48,11 +48,13 @@ def seed_database():
         print("Seeding demo logins...")
         # Demo Logins
         demo_accounts = [
+            {"email": "mail.cohabio@gmail.com", "password": "Admin@123", "role": "admin", "name": "CoHabio System Admin", "status": "verified"},
+            {"email": "founder.cohabio@gmail.com", "password": "Founder@123", "role": "admin", "name": "Rishi Rithesh (Founder)", "status": "verified"},
             {"email": "admin@cohabio.com", "password": "Admin@123", "role": "admin", "name": "System Administrator", "status": "verified"},
             {"email": "ceo@cohabio.com", "password": "Ceo@123", "role": "admin", "name": "CEO Admin", "status": "verified"},
-            {"email": "manager@cohabio.com", "password": "Manager@123", "role": "admin", "name": "Manager Admin", "status": "verified"},
             {"email": "moderator@cohabio.com", "password": "Moderator@123", "role": "moderator", "name": "Content Moderator", "status": "verified"},
             {"email": "student@cohabio.com", "password": "Student@123", "role": "user", "name": "Rohan (Student) Sharma", "status": "verified"},
+            {"email": "student@gmail.com", "password": "Student@123", "role": "user", "name": "Dev Test Student", "status": "verified"},
             {"email": "owner@cohabio.com", "password": "Owner@123", "role": "owner", "name": "Mr. Murthy (Owner)", "status": "verified"},
         ]
 

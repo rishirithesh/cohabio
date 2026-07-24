@@ -49,16 +49,21 @@ def signup(data: UserSignup, db: Session = Depends(get_db)):
             detail="A user with this email is already registered."
         )
     
+    # Check if email belongs to designated system admin accounts
+    ADMIN_EMAILS = {"mail.cohabio@gmail.com", "founder.cohabio@gmail.com", "admin@cohabio.com", "ceo@cohabio.com"}
+    assigned_role = "admin" if data.email.lower() in ADMIN_EMAILS else (data.role if data.role else "user")
+
     # Create new User
     user = User(
         email=data.email,
         hashed_password=get_password_hash(data.password),
         phone=data.phone,
-        role=data.role if data.role else "user",
+        role=assigned_role,
         is_verified=False
     )
     db.add(user)
     db.flush() # populate user ID
+
 
     # Create associated empty Profile & Lifestyle preference structure
     profile = Profile(

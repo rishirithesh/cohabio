@@ -1,14 +1,13 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Header
 from app.schemas.schemas import RelocationQuery
 from app.services.ai_gemini import GeminiRelocationAssistant
-from app.api.deps import get_active_user
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 
 router = APIRouter()
 ai_assistant = GeminiRelocationAssistant()
 
 @router.get("/checklists")
-def get_checklists(current_user = Depends(get_active_user)):
+def get_checklists():
     return {
         "packing": [
             {"id": "p1", "task": "Pack electronics & chargers", "category": "Essentials", "completed": False},
@@ -25,7 +24,7 @@ def get_checklists(current_user = Depends(get_active_user)):
     }
 
 @router.post("/assistant")
-def relocation_advisor(query: RelocationQuery, current_user = Depends(get_active_user)):
+def relocation_advisor(query: RelocationQuery):
     advice = ai_assistant.get_relocation_advice(
         current_city=query.current_city,
         target_city=query.target_city,
@@ -35,6 +34,7 @@ def relocation_advisor(query: RelocationQuery, current_user = Depends(get_active
     return {"advice": advice}
 
 @router.get("/search/parse")
-def parse_natural_search(query: str, current_user = Depends(get_active_user)):
+def parse_natural_search(query: str):
     parsed = ai_assistant.parse_natural_language_search(query)
     return parsed
+

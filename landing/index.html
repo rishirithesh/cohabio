@@ -26,31 +26,33 @@
 
   <!-- Glassmorphism Header -->
   <header>
-    <a href="#" class="logo">
-      <img src="favicon.ico" alt="Cohabio Logo" class="logo-icon">
-      <span>Cohabio</span>
-    </a>
-    
-    <nav class="desktop-nav">
-      <a href="#features">Features</a>
-      <a href="#communities">Communities</a>
-      <a href="#waitlist">Waitlist</a>
-    </nav>
-    <div class="header-actions">
-      <!-- Google Sign In Button Container -->
-      <!-- TODO: Replace YOUR_GOOGLE_WEB_CLIENT_ID with your real OAuth 2.0 Client ID from Google Cloud Console -->
-      <div id="g_id_onload" data-client_id="YOUR_GOOGLE_WEB_CLIENT_ID" data-context="signin" data-ux_mode="popup"
-        data-callback="handleGoogleCredentialResponse" data-auto_prompt="false">
+    <div class="header-inner">
+      <a href="#" class="logo">
+        <img src="favicon.ico" alt="Cohabio Logo" class="logo-icon">
+        <span>Cohabio</span>
+      </a>
+      
+      <nav class="desktop-nav">
+        <a href="#features">Features</a>
+        <a href="#communities">Communities</a>
+        <a href="#waitlist">Waitlist</a>
+      </nav>
+      <div class="header-actions">
+        <!-- Google Sign In Button Container -->
+        <!-- TODO: Replace YOUR_GOOGLE_WEB_CLIENT_ID with your real OAuth 2.0 Client ID from Google Cloud Console -->
+        <div id="g_id_onload" data-client_id="YOUR_GOOGLE_WEB_CLIENT_ID" data-context="signin" data-ux_mode="popup"
+          data-callback="handleGoogleCredentialResponse" data-auto_prompt="false">
+        </div>
+        <div class="g_id_signin" data-type="standard" data-shape="pill" data-theme="outline"
+          data-text="signin_with" data-size="large" data-logo_alignment="left">
+        </div>
+        <a href="#waitlist" class="btn btn-primary">Join Waitlist</a>
       </div>
-      <div class="g_id_signin" data-type="standard" data-shape="rectangular" data-theme="outline"
-        data-text="signin_with" data-size="large" data-logo_alignment="left">
-      </div>
-      <a href="#waitlist" class="btn btn-primary">Join Waitlist</a>
+      <!-- Hamburger for mobile -->
+      <button class="hamburger-btn" id="hamburger-btn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <!-- Hamburger for mobile -->
-    <button class="hamburger-btn" id="hamburger-btn" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
   </header>
 
   <!-- Mobile Navigation -->
@@ -68,10 +70,10 @@
       communities, and AI-powered city guides before you move.</p>
 
     <div class="hero-actions">
-      <a href="#waitlist" class="btn btn-primary" style="padding: 1rem 2rem; font-size: 1.1rem;">Get Early Access</a>
+      <a href="#waitlist" class="btn btn-hero-primary">Get Early Access</a>
       <button
         onclick="alert('Android App is currently in development/testing. Join the waitlist to be notified upon Google Play Store launch!');"
-        class="btn btn-google" style="padding: 1rem 2rem; font-size: 1.1rem; border: 2px solid var(--neutral-300);">
+        class="btn btn-hero-secondary">
         📱 Download the App
       </button>
     </div>
@@ -201,8 +203,7 @@
       <input type="email" id="email" class="form-input" placeholder="Your Email Address" required>
       <input type="text" id="targetCity" class="form-input" placeholder="Destination City (e.g. Bangalore, Mumbai)"
         required>
-      <button type="submit" class="btn btn-primary"
-        style="padding: 1rem; border-radius: var(--radius-full); font-size: 1.05rem;">Reserve My Spot 🚀</button>
+      <button type="submit" class="btn btn-primary btn-waitlist-submit">Reserve My Spot 🚀</button>
     </form>
     <div id="waitlistMsg" style="margin-top: 1rem; font-weight: 600; min-height: 24px;"></div>
   </section>

@@ -4,7 +4,10 @@ import 'package:cohabio/app/theme/cohabio_theme.dart';
 import 'package:cohabio/app/router.dart';
 import 'package:cohabio/features/communities/presentation/communities_feed_screen.dart';
 import 'package:cohabio/features/roommate_matching/presentation/roommate_swipe_screen.dart';
+import 'package:cohabio/features/housing/presentation/housing_screen.dart';
 import 'package:cohabio/features/ai_assistant/presentation/ai_relocation_screen.dart';
+import 'package:cohabio/features/events/presentation/events_screen.dart';
+import 'package:cohabio/features/chat/presentation/chat_list_screen.dart';
 import 'package:cohabio/features/notifications/presentation/notifications_screen.dart';
 import 'package:cohabio/features/profile/presentation/profile_screen.dart';
 
@@ -44,7 +47,10 @@ class _AppDashboardNavigatorState extends State<AppDashboardNavigator> {
   final List<Widget> _tabs = [
     const CommunitiesFeedScreen(),
     const RoommateSwipeScreen(),
+    const HousingScreen(),
     const AiRelocationScreen(),
+    const EventsScreen(),
+    const ChatListScreen(),
     const NotificationsScreen(),
     const ProfileScreen(),
   ];
@@ -74,8 +80,8 @@ class _AppDashboardNavigatorState extends State<AppDashboardNavigator> {
           selectedItemColor: const Color(0xFF22C55E),
           unselectedItemColor: Colors.white54,
           type: BottomNavigationBarType.fixed,
-          selectedFontSize: 12,
-          unselectedFontSize: 11,
+          selectedFontSize: 11,
+          unselectedFontSize: 10,
           onTap: (index) => setState(() => _currentIndex = index),
           items: const [
             BottomNavigationBarItem(
@@ -89,9 +95,24 @@ class _AppDashboardNavigatorState extends State<AppDashboardNavigator> {
               label: 'Matches',
             ),
             BottomNavigationBarItem(
+              icon: Icon(Icons.home_work_outlined),
+              activeIcon: Icon(Icons.home_work),
+              label: 'Housing',
+            ),
+            BottomNavigationBarItem(
               icon: Icon(Icons.auto_awesome_outlined),
               activeIcon: Icon(Icons.auto_awesome),
               label: 'AI Guide',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.event_outlined),
+              activeIcon: Icon(Icons.event),
+              label: 'Events',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.chat_bubble_outline),
+              activeIcon: Icon(Icons.chat_bubble),
+              label: 'Chats',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.notifications_outlined),

@@ -306,9 +306,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       ? null
                       : () async {
                           final success = await ref.read(authProvider.notifier).loginWithGoogle(
-                                email: "student.google@cohabio.com",
-                                name: "Demo Google Student",
-                                picture: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150",
+                                idToken: "simulated_google_token",
                               );
                           if (success && mounted) {
                             context.go('/dashboard');

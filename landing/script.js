@@ -1,3 +1,6 @@
+// Dynamic Backend Base URL configuration
+const API_BASE_URL = window.COHABIO_API_URL || 'http://localhost:8000';
+
 document.getElementById('waitlistForm').addEventListener('submit', async (e) => {
   e.preventDefault();
   
@@ -10,7 +13,7 @@ document.getElementById('waitlistForm').addEventListener('submit', async (e) => 
   msgDiv.textContent = 'Submitting details to waitlist...';
 
   try {
-    const response = await fetch('http://localhost:8000/api/v1/waitlist', {
+    const response = await fetch(`${API_BASE_URL}/api/v1/waitlist`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -52,7 +55,7 @@ async function handleGoogleCredentialResponse(response) {
   }
 
   try {
-    const res = await fetch('http://localhost:8000/api/v1/auth/google', {
+    const res = await fetch(`${API_BASE_URL}/api/v1/auth/google`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -65,14 +68,13 @@ async function handleGoogleCredentialResponse(response) {
     if (res.ok) {
       const data = await res.json();
       alert(`Welcome to Cohabio!\n\nSuccessfully authenticated via Google.\nRole: ${data.role}\n\nSince this is the landing page, we recommend downloading the mobile app for the full experience!`);
-      // Future: Redirect to web app dashboard if applicable
     } else {
       const err = await res.json();
       alert(`Authentication Failed: ${err.detail || 'Error verifying Google token.'}`);
     }
   } catch (error) {
     console.error("Google Sign-In connection failed:", error);
-    alert(`Could not connect to the backend server.\nMake sure the backend is running at localhost:8000.`);
+    alert(`Could not connect to the backend server at ${API_BASE_URL}.`);
   }
 }
 
@@ -123,7 +125,6 @@ function appendMessage(role, text) {
       actionBtn.classList.add('chat-action-btn');
       actionBtn.textContent = 'Join the Waitlist';
       actionBtn.addEventListener('click', () => {
-        // If they click waitlist, close chat for better UX
         if(window.innerWidth <= 480) toggleChatbot();
       });
       msgDiv.appendChild(actionBtn);
@@ -154,7 +155,6 @@ async function sendMessage() {
   const text = chatbotInput.value.trim();
   if (!text) return;
   
-  // Enforce Max Length Client-side
   if (text.length > 150) {
     alert("Message is too long. Please keep it under 150 characters.");
     return;
@@ -163,21 +163,20 @@ async function sendMessage() {
   chatbotInput.value = '';
   appendMessage('user', text);
   
-  // Add to internal history
   chatHistory.push({ role: 'user', content: text });
   
   showTypingIndicator();
   chatbotSendBtn.disabled = true;
 
   try {
-    const res = await fetch('http://localhost:8000/api/v1/public/bot/chat', {
+    const res = await fetch(`${API_BASE_URL}/api/v1/public/bot/chat`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         message: text,
-        history: chatHistory.slice(-4) // Only send recent context to save tokens
+        history: chatHistory.slice(-4)
       })
     });
 

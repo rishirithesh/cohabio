@@ -38,6 +38,7 @@
     </nav>
     <div class="header-actions">
       <!-- Google Sign In Button Container -->
+      <!-- TODO: Replace YOUR_GOOGLE_WEB_CLIENT_ID with your real OAuth 2.0 Client ID from Google Cloud Console -->
       <div id="g_id_onload" data-client_id="YOUR_GOOGLE_WEB_CLIENT_ID" data-context="signin" data-ux_mode="popup"
         data-callback="handleGoogleCredentialResponse" data-auto_prompt="false">
       </div>
@@ -46,7 +47,18 @@
       </div>
       <a href="#waitlist" class="btn btn-primary">Join Waitlist</a>
     </div>
+    <!-- Hamburger for mobile -->
+    <button class="hamburger-btn" id="hamburger-btn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </header>
+
+  <!-- Mobile Navigation -->
+  <nav class="mobile-nav" id="mobile-nav">
+    <a href="#features" class="mobile-nav-link">Features</a>
+    <a href="#communities" class="mobile-nav-link">Communities</a>
+    <a href="#waitlist" class="mobile-nav-link">Join Waitlist 🚀</a>
+  </nav>
 
   <!-- Hero Section -->
   <section class="hero">
@@ -112,15 +124,16 @@
   <!-- Features Section -->
   <section class="features" id="features">
     <div class="section-title">
-      <h2>Why Cohabio is Different</h2>
-      <p style="color: var(--neutral-600); margin-top: 0.5rem;">We build community first so you feel at home before
+      <div class="section-badge">✦ Why We're Different</div>
+      <h2>Built for Real Relocators</h2>
+      <p style="color: var(--neutral-600); margin-top: 0.75rem; max-width: 560px; margin-left: auto; margin-right: auto;">We build community first so you feel at home before
         unpacking your bags.</p>
     </div>
 
     <div class="feature-grid">
       <div class="feature-card">
         <div class="feature-icon">🌐</div>
-        <h3>City & Niche Communities</h3>
+        <h3>City &amp; Niche Communities</h3>
         <p style="color: var(--neutral-600); font-size: 0.95rem; margin-top: 0.5rem;">Connect with students from your
           college, people speaking your native language, or fellow freshers moving to your new city.</p>
       </div>
@@ -138,6 +151,41 @@
         <p style="color: var(--neutral-600); font-size: 0.95rem; margin-top: 0.5rem;">Ask natural questions like
           <em>"Moving to Bangalore with ₹15k budget"</em> to receive instant area recommendations and relocation
           timelines.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Communities Section -->
+  <section class="communities-section" id="communities">
+    <div class="section-title">
+      <div class="section-badge">👥 Real Communities</div>
+      <h2>Find Your Tribe, First</h2>
+      <p style="color: var(--neutral-600); margin-top: 0.75rem; max-width: 560px; margin-left: auto; margin-right: auto;">Join verified communities of people just like you — before you even land in your new city.</p>
+    </div>
+    <div class="community-grid">
+      <div class="community-card">
+        <div class="community-card-icon">🏙️</div>
+        <h3>Bangalore Techies &amp; Interns</h3>
+        <p>Students and SDE interns moving to Bangalore. Share PGs, commutes, and company referrals.</p>
+        <span class="community-meta">1,420 Members • Active Today</span>
+      </div>
+      <div class="community-card">
+        <div class="community-card-icon">🎓</div>
+        <h3>IIT &amp; IIM Freshers Network</h3>
+        <p>Connect with incoming batch mates before the semester starts. Find accommodation, groups, and mentors.</p>
+        <span class="community-meta">840 Members • Very Active</span>
+      </div>
+      <div class="community-card">
+        <div class="community-card-icon">🌆</div>
+        <h3>Mumbai Finance Professionals</h3>
+        <p>BKC, Lower Parel, Andheri — find verified flatmates working in banking, consulting, and fintech.</p>
+        <span class="community-meta">620 Members</span>
+      </div>
+      <div class="community-card">
+        <div class="community-card-icon">🤝</div>
+        <h3>Hyderabad HITEC City Hub</h3>
+        <p>Connect with professionals relocating to Gachibowli, Madhapur, and the HITEC City corridor.</p>
+        <span class="community-meta">510 Members</span>
       </div>
     </div>
   </section>
@@ -161,7 +209,40 @@
 
   <!-- Footer -->
   <footer>
-    <p>© 2026 CoHabio. All rights reserved.</p>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <img src="favicon.ico" alt="Cohabio Logo" class="logo-icon">
+          <span>Cohabio</span>
+        </a>
+        <p>The community-first relocation platform for students and young professionals. Find verified roommates, local communities, and AI-powered city guides.</p>
+      </div>
+      <div class="footer-links">
+        <h5>Product</h5>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#communities">Communities</a></li>
+          <li><a href="#waitlist">Join Waitlist</a></li>
+          <li><a href="#">Download App</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="mailto:founder.cohabio@gmail.com">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 CoHabio Technologies. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
   </footer>
 
   <!-- Floating AI Chatbot -->

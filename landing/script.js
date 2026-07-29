@@ -1,6 +1,39 @@
 // Dynamic Backend Base URL configuration
 const API_BASE_URL = window.COHABIO_API_URL || 'http://localhost:8000';
 
+// --- Hamburger Mobile Menu ---
+const hamburgerBtn = document.getElementById('hamburger-btn');
+const mobileNav = document.getElementById('mobile-nav');
+
+if (hamburgerBtn && mobileNav) {
+  hamburgerBtn.addEventListener('click', () => {
+    mobileNav.classList.toggle('open');
+    const isOpen = mobileNav.classList.contains('open');
+    hamburgerBtn.setAttribute('aria-expanded', isOpen);
+  });
+  // Close mobile nav when a link is clicked
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+    });
+  });
+}
+
+// --- Scroll-Reveal Animations ---
+const revealElements = document.querySelectorAll('.feature-card, .community-card');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      // Stagger the reveal with a small delay per card
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, 80 * (Array.from(revealElements).indexOf(entry.target) % 4));
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+revealElements.forEach(el => revealObserver.observe(el));
+
 document.getElementById('waitlistForm').addEventListener('submit', async (e) => {
   e.preventDefault();
   

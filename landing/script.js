@@ -240,3 +240,15 @@ chatbotInput.addEventListener('keypress', (e) => {
     sendMessage();
   }
 });
+
+// ESC Key accessibility listener
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    if (chatbotContainer && !chatbotContainer.classList.contains('hidden')) {
+      toggleChatbot();
+    }
+    if (mobileNav && mobileNav.classList.contains('open')) {
+      mobileNav.classList.remove('open');
+    }
+  }
+});

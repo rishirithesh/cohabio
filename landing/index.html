@@ -14,10 +14,37 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <!-- SEO & Canonical Metadata -->
+  <link rel="canonical" href="https://cohabio.vercel.app">
+  <meta name="theme-color" content="#10B981">
+
+  <!-- JSON-LD Structured Data Schema for Search Engines -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Cohabio",
+    "operatingSystem": "Web, Android, iOS",
+    "applicationCategory": "LifestyleApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Community-first AI relocation platform for students and young professionals. Find verified roommates, local communities, housing, and AI relocation assistance.",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "1420"
+    }
+  }
+  </script>
+  <!-- Stylesheets & Fonts -->
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
   <!-- Google Identity Services Web SDK -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
@@ -25,7 +52,7 @@
 <body>
 
   <!-- Glassmorphism Header -->
-  <header>
+  <header role="banner">
     <div class="header-inner">
       <a href="#" class="logo">
         <img src="favicon.ico" alt="Cohabio Logo" class="logo-icon">

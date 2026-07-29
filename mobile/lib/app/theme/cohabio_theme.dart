@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CohabioTheme {
-  static const Color primaryColor = Color(0xFF16A34A);
-  static const Color primaryHoverColor = Color(0xFF15803D);
-  static const Color accentColor = Color(0xFF38BDF8);
+  static const Color primaryColor = Color(0xFF10B981);
+  static const Color primaryHoverColor = Color(0xFF059669);
+  static const Color accentColor = Color(0xFF0EA5E9);
   
-  static const Color backgroundLight = Color(0xFFF8FAFC);
+  static const Color backgroundLight = Color(0xFFFAF9F6);
   static const Color surfaceLight = Colors.white;
   static const Color textDark = Color(0xFF0F172A);
   static const Color textMutedLight = Color(0xFF475569);
 
   static const Color backgroundDark = Color(0xFF0F172A);
   static const Color surfaceDark = Color(0xFF1E293B);
-  static const Color textLight = Color(0xFFF8FAFC);
+  static const Color textLight = Color(0xFFFAF9F6);
   static const Color textMutedDark = Color(0xFF94A3B8);
 
   static ThemeData get lightTheme {
@@ -84,6 +84,30 @@ class CohabioTheme {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
           side: const BorderSide(color: Color(0xFF334155), width: 1),
+        ),
+      ),
+      appBarTheme: const AppBarTheme(
+        backgroundColor: backgroundDark,
+        elevation: 0,
+        centerTitle: false,
+        iconTheme: IconThemeData(color: textLight),
+      ),
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+        backgroundColor: surfaceDark,
+        selectedItemColor: primaryColor,
+        unselectedItemColor: textMutedDark,
+        type: BottomNavigationBarType.fixed,
+        selectedLabelStyle: TextStyle(fontWeight: FontWeight.w600, fontSize: 11),
+        unselectedLabelStyle: TextStyle(fontWeight: FontWeight.w500, fontSize: 10),
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: primaryColor,
+          foregroundColor: Colors.white,
+          elevation: 0,
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(9999)),
+          textStyle: const TextStyle(fontWeight: FontWeight.w600, fontSize: 15),
         ),
       ),
       inputDecorationTheme: InputDecorationTheme(

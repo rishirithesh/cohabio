@@ -49,9 +49,6 @@ class _AppDashboardNavigatorState extends State<AppDashboardNavigator> {
     const RoommateSwipeScreen(),
     const HousingScreen(),
     const AiRelocationScreen(),
-    const EventsScreen(),
-    const ChatListScreen(),
-    const NotificationsScreen(),
     const ProfileScreen(),
   ];
 
@@ -59,6 +56,46 @@ class _AppDashboardNavigatorState extends State<AppDashboardNavigator> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF0F172A),
+      appBar: AppBar(
+        title: Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(6),
+              decoration: BoxDecoration(
+                color: const Color(0xFF10B981),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: const Icon(Icons.handshake, color: Colors.white, size: 20),
+            ),
+            const SizedBox(width: 10),
+            const Text(
+              'Cohabio',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white),
+            ),
+          ],
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.chat_bubble_outline),
+            tooltip: 'Chats',
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => const ChatListScreen()),
+              );
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.notifications_outline),
+            tooltip: 'Notifications',
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => const NotificationsScreen()),
+              );
+            },
+          ),
+          const SizedBox(width: 8),
+        ],
+      ),
       body: IndexedStack(
         index: _currentIndex,
         children: _tabs,
@@ -77,8 +114,8 @@ class _AppDashboardNavigatorState extends State<AppDashboardNavigator> {
         child: BottomNavigationBar(
           currentIndex: _currentIndex,
           backgroundColor: const Color(0xFF1E293B),
-          selectedItemColor: const Color(0xFF22C55E),
-          unselectedItemColor: Colors.white54,
+          selectedItemColor: const Color(0xFF10B981),
+          unselectedItemColor: const Color(0xFF94A3B8),
           type: BottomNavigationBarType.fixed,
           selectedFontSize: 11,
           unselectedFontSize: 10,
@@ -90,8 +127,8 @@ class _AppDashboardNavigatorState extends State<AppDashboardNavigator> {
               label: 'Communities',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.search_outlined),
-              activeIcon: Icon(Icons.search),
+              icon: Icon(Icons.style_outlined),
+              activeIcon: Icon(Icons.style),
               label: 'Matches',
             ),
             BottomNavigationBarItem(
@@ -103,21 +140,6 @@ class _AppDashboardNavigatorState extends State<AppDashboardNavigator> {
               icon: Icon(Icons.auto_awesome_outlined),
               activeIcon: Icon(Icons.auto_awesome),
               label: 'AI Guide',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.event_outlined),
-              activeIcon: Icon(Icons.event),
-              label: 'Events',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.chat_bubble_outline),
-              activeIcon: Icon(Icons.chat_bubble),
-              label: 'Chats',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.notifications_outlined),
-              activeIcon: Icon(Icons.notifications),
-              label: 'Alerts',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person_outline),

@@ -10,7 +10,8 @@ from app.api.v1.endpoints import (
     events,
     admin,
     waitlist,
-    notifications
+    notifications,
+    public_bot
 )
 
 api_router = APIRouter()
@@ -26,3 +27,4 @@ api_router.include_router(events.router, prefix="/events", tags=["events"])
 api_router.include_router(admin.router, prefix="/admin", tags=["admin"])
 api_router.include_router(waitlist.router, prefix="/waitlist", tags=["waitlist"])
 api_router.include_router(notifications.router, prefix="/notifications", tags=["notifications"])
+api_router.include_router(public_bot.router, prefix="/public/bot", tags=["public_bot"])

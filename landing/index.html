@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cohabio — Find Your People. Find Your Place.</title>
-  <meta name="description" content="Cohabio is a community-first AI relocation platform for students and young professionals. Find verified roommates, local communities, housing, and AI relocation assistance.">
+  <meta name="description"
+    content="Cohabio is a community-first AI relocation platform for students and young professionals. Find verified roommates, local communities, housing, and AI relocation assistance.">
   <meta property="og:title" content="Cohabio — Find Your People. Find Your Place.">
-  <meta property="og:description" content="Community-first relocation & roommate matching app for students and young professionals.">
+  <meta property="og:description"
+    content="Community-first relocation & roommate matching app for students and young professionals.">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -14,10 +17,11 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <!-- Google Identity Services Web SDK -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
+
 <body>
 
   <!-- Glassmorphism Header -->
@@ -26,28 +30,19 @@
       <img src="favicon.ico" alt="Cohabio Logo" class="logo-icon">
       <span>Cohabio</span>
     </a>
-    <nav>
+    
+    <nav class="desktop-nav">
       <a href="#features">Features</a>
       <a href="#communities">Communities</a>
-      <a href="#ai">AI Assistant</a>
       <a href="#waitlist">Waitlist</a>
     </nav>
-    <div style="display: flex; gap: 0.75rem; align-items: center;">
+    <div class="header-actions">
       <!-- Google Sign In Button Container -->
-      <div id="g_id_onload"
-           data-client_id="YOUR_GOOGLE_WEB_CLIENT_ID"
-           data-context="signin"
-           data-ux_mode="popup"
-           data-callback="handleGoogleCredentialResponse"
-           data-auto_prompt="false">
+      <div id="g_id_onload" data-client_id="YOUR_GOOGLE_WEB_CLIENT_ID" data-context="signin" data-ux_mode="popup"
+        data-callback="handleGoogleCredentialResponse" data-auto_prompt="false">
       </div>
-      <div class="g_id_signin"
-           data-type="standard"
-           data-shape="rectangular"
-           data-theme="outline"
-           data-text="signin_with"
-           data-size="large"
-           data-logo_alignment="left">
+      <div class="g_id_signin" data-type="standard" data-shape="rectangular" data-theme="outline"
+        data-text="signin_with" data-size="large" data-logo_alignment="left">
       </div>
       <a href="#waitlist" class="btn btn-primary">Join Waitlist</a>
     </div>
@@ -57,11 +52,14 @@
   <section class="hero">
     <div class="badge">🚀 Community-First Relocation Platform</div>
     <h1>Find Your People.<br><span>Find Your Place.</span></h1>
-    <p>Relocating to a new city shouldn't be lonely or chaotic. Cohabio connects you with trusted roommates, verified communities, and AI-powered city guides before you move.</p>
-    
+    <p>Relocating to a new city shouldn't be lonely or chaotic. Cohabio connects you with trusted roommates, verified
+      communities, and AI-powered city guides before you move.</p>
+
     <div class="hero-actions">
       <a href="#waitlist" class="btn btn-primary" style="padding: 1rem 2rem; font-size: 1.1rem;">Get Early Access</a>
-      <button onclick="alert('Android App is currently in development/testing. Join the waitlist to be notified upon Google Play Store launch!');" class="btn btn-google" style="padding: 1rem 2rem; font-size: 1.1rem; border: 2px solid var(--neutral-300);">
+      <button
+        onclick="alert('Android App is currently in development/testing. Join the waitlist to be notified upon Google Play Store launch!');"
+        class="btn btn-google" style="padding: 1rem 2rem; font-size: 1.1rem; border: 2px solid var(--neutral-300);">
         📱 Download the App
       </button>
     </div>
@@ -94,11 +92,17 @@
           <span class="match-badge">94% Compatible</span>
           <div class="card-tag">AI Recommended Roommate</div>
           <h3 style="margin-bottom: 0.25rem; font-size: 1.1rem;">Rohan Sharma, 22</h3>
-          <p style="font-size: 0.85rem; color: var(--neutral-600); margin-bottom: 0.75rem;">SDE Intern @ Google • Delhi to Bangalore</p>
+          <p style="font-size: 0.85rem; color: var(--neutral-600); margin-bottom: 0.75rem;">SDE Intern @ Google • Delhi
+            to Bangalore</p>
           <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-            <span style="font-size: 0.75rem; background: var(--primary-light); color: var(--primary); padding: 0.25rem 0.5rem; border-radius: 4px; font-weight: 600;">Night Owl</span>
-            <span style="font-size: 0.75rem; background: var(--primary-light); color: var(--primary); padding: 0.25rem 0.5rem; border-radius: 4px; font-weight: 600;">Vegetarian</span>
-            <span style="font-size: 0.75rem; background: var(--primary-light); color: var(--primary); padding: 0.25rem 0.5rem; border-radius: 4px; font-weight: 600;">Clean Rating: 4/5</span>
+            <span
+              style="font-size: 0.75rem; background: var(--primary-light); color: var(--primary); padding: 0.25rem 0.5rem; border-radius: 4px; font-weight: 600;">Night
+              Owl</span>
+            <span
+              style="font-size: 0.75rem; background: var(--primary-light); color: var(--primary); padding: 0.25rem 0.5rem; border-radius: 4px; font-weight: 600;">Vegetarian</span>
+            <span
+              style="font-size: 0.75rem; background: var(--primary-light); color: var(--primary); padding: 0.25rem 0.5rem; border-radius: 4px; font-weight: 600;">Clean
+              Rating: 4/5</span>
           </div>
         </div>
       </div>
@@ -109,26 +113,31 @@
   <section class="features" id="features">
     <div class="section-title">
       <h2>Why Cohabio is Different</h2>
-      <p style="color: var(--neutral-600); margin-top: 0.5rem;">We build community first so you feel at home before unpacking your bags.</p>
+      <p style="color: var(--neutral-600); margin-top: 0.5rem;">We build community first so you feel at home before
+        unpacking your bags.</p>
     </div>
 
     <div class="feature-grid">
       <div class="feature-card">
         <div class="feature-icon">🌐</div>
         <h3>City & Niche Communities</h3>
-        <p style="color: var(--neutral-600); font-size: 0.95rem; margin-top: 0.5rem;">Connect with students from your college, people speaking your native language, or fellow freshers moving to your new city.</p>
+        <p style="color: var(--neutral-600); font-size: 0.95rem; margin-top: 0.5rem;">Connect with students from your
+          college, people speaking your native language, or fellow freshers moving to your new city.</p>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon">🤝</div>
         <h3>Algorithmic Matchmaking</h3>
-        <p style="color: var(--neutral-600); font-size: 0.95rem; margin-top: 0.5rem;">Our 6-factor algorithm matches roomies by budget overlap, cleanliness ratings, sleep schedules, food habits, and pets.</p>
+        <p style="color: var(--neutral-600); font-size: 0.95rem; margin-top: 0.5rem;">Our 6-factor algorithm matches
+          roomies by budget overlap, cleanliness ratings, sleep schedules, food habits, and pets.</p>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon">✨</div>
         <h3>Gemini AI Assistant</h3>
-        <p style="color: var(--neutral-600); font-size: 0.95rem; margin-top: 0.5rem;">Ask natural questions like <em>"Moving to Bangalore with ₹15k budget"</em> to receive instant area recommendations and relocation timelines.</p>
+        <p style="color: var(--neutral-600); font-size: 0.95rem; margin-top: 0.5rem;">Ask natural questions like
+          <em>"Moving to Bangalore with ₹15k budget"</em> to receive instant area recommendations and relocation
+          timelines.</p>
       </div>
     </div>
   </section>
@@ -136,22 +145,57 @@
   <!-- Waitlist Section -->
   <section class="waitlist-section" id="waitlist">
     <h2 style="font-size: 2.25rem; font-weight: 800;">Join the Cohabio Early Access</h2>
-    <p style="color: var(--neutral-400); margin-top: 0.75rem; font-size: 1.1rem;">Be among the first to experience seamless, community-first relocation.</p>
+    <p style="color: var(--neutral-400); margin-top: 0.75rem; font-size: 1.1rem;">Be among the first to experience
+      seamless, community-first relocation.</p>
 
     <form class="waitlist-form" id="waitlistForm">
       <input type="text" id="fullName" class="form-input" placeholder="Your Full Name" required>
       <input type="email" id="email" class="form-input" placeholder="Your Email Address" required>
-      <input type="text" id="targetCity" class="form-input" placeholder="Destination City (e.g. Bangalore, Mumbai)" required>
-      <button type="submit" class="btn btn-primary" style="padding: 1rem; border-radius: var(--radius-full); font-size: 1.05rem;">Reserve My Spot 🚀</button>
+      <input type="text" id="targetCity" class="form-input" placeholder="Destination City (e.g. Bangalore, Mumbai)"
+        required>
+      <button type="submit" class="btn btn-primary"
+        style="padding: 1rem; border-radius: var(--radius-full); font-size: 1.05rem;">Reserve My Spot 🚀</button>
     </form>
     <div id="waitlistMsg" style="margin-top: 1rem; font-weight: 600; min-height: 24px;"></div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>© 2026 Cohabio Technologies Inc. All rights reserved. Designed with precision for students & young professionals.</p>
+    <p>© 2026 CoHabio. All rights reserved.</p>
   </footer>
+
+  <!-- Floating AI Chatbot -->
+  <div id="chatbot-container" class="chatbot-container hidden">
+    <div class="chatbot-header">
+      <div class="chatbot-header-info">
+        <div class="chatbot-avatar">🤖</div>
+        <div>
+          <h4>CoHabio AI</h4>
+          <span class="status-dot"></span><small>Online</small>
+        </div>
+      </div>
+      <button id="chatbot-close-btn" class="chatbot-close-btn">&times;</button>
+    </div>
+    
+    <div id="chatbot-messages" class="chatbot-messages">
+      <div class="message assistant-message">
+        Hi there! 👋 I'm the CoHabio product assistant. What can I tell you about our community-first relocation app?
+      </div>
+    </div>
+    
+    <div class="chatbot-input-area">
+      <input type="text" id="chatbot-input" placeholder="Ask anything about CoHabio..." autocomplete="off">
+      <button id="chatbot-send-btn" class="chatbot-send-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+      </button>
+    </div>
+  </div>
+  
+  <button id="chatbot-trigger" class="chatbot-trigger">
+    <span class="chatbot-trigger-icon">💬</span>
+  </button>
 
   <script src="script.js"></script>
 </body>
+
 </html>

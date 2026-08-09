@@ -8,7 +8,7 @@ router = APIRouter()
 
 class ChatMessage(BaseModel):
     message: str = Field(..., min_length=1, max_length=150)
-    history: List[Dict[str, str]] = Field(default_factory=list, max_items=10)
+    history: List[Dict[str, str]] = Field(default_factory=list, max_length=10)
 
 # Simple in-memory rate limiter for public unauthenticated endpoints
 # Dictionary structure: { "ip_address": {"count": int, "reset_time": datetime} }

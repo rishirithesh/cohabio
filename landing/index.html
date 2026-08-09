@@ -4,21 +4,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cohabio — Find Your People. Find Your Place.</title>
+  <title>Cohabio — AI Roommate Matching & Community Relocation Platform</title>
   <meta name="description"
-    content="Cohabio is a community-first AI relocation platform for students and young professionals. Find verified roommates, local communities, housing, and AI relocation assistance.">
+    content="Cohabio is a community-first AI relocation platform for students and young professionals. Find verified roommates, local communities, student housing, and AI relocation guides.">
+  <meta name="keywords"
+    content="roommate finder, verified roommates, student housing, relocation app, Bangalore roommates, Mumbai PGs, AI roommate match, cohabio">
+  <meta name="author" content="Cohabio Technologies">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+
+  <!-- OpenGraph Metadata for Social Media & Web Crawlers -->
   <meta property="og:title" content="Cohabio — Find Your People. Find Your Place.">
   <meta property="og:description"
-    content="Community-first relocation & roommate matching app for students and young professionals.">
+    content="Community-first relocation & verified roommate matching platform for students and young professionals.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cohabio.vercel.app">
+  <meta property="og:image" content="https://cohabio.vercel.app/newfavicon.ico">
+  <meta property="og:site_name" content="Cohabio">
+
+  <!-- Twitter Card Metadata -->
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <meta name="twitter:site" content="@cohabio">
+  <meta name="twitter:creator" content="@cohabio">
+  <meta name="twitter:title" content="Cohabio — AI Roommate Matching & Community Relocation Platform">
+  <meta name="twitter:description" content="Find verified roommates, local city communities, and AI relocation guides before you move.">
+  <meta name="twitter:image" content="https://cohabio.vercel.app/newfavicon.ico">
+
+  <link rel="icon" type="image/x-icon" href="newfavicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="newfavicon.ico">
   <!-- SEO & Canonical Metadata -->
   <link rel="canonical" href="https://cohabio.vercel.app">
   <meta name="theme-color" content="#10B981">
 
-  <!-- JSON-LD Structured Data Schema for Search Engines -->
+  <!-- JSON-LD Structured Data Schema 1: SoftwareApplication -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -39,14 +56,90 @@
     }
   }
   </script>
+
+  <!-- JSON-LD Structured Data Schema 2: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Cohabio Technologies",
+    "url": "https://cohabio.vercel.app",
+    "logo": "https://cohabio.vercel.app/newfavicon.ico",
+    "sameAs": [
+      "https://twitter.com/cohabio",
+      "https://github.com/rishirithesh/cohabio"
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD Structured Data Schema 3: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [{
+      "@type": "Question",
+      "name": "How does Google Sign-In work on Cohabio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cohabio uses Google Identity Services & Firebase Auth for instant, single-click sign-in. Your account is automatically created and linked to your verified email address."
+      }
+    }, {
+      "@type": "Question",
+      "name": "How is the Roommate Compatibility Score calculated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our 6-factor algorithm evaluates Budget Overlap (25%), Cleanliness Rating (20%), Sleep/Work Schedule (20%), Habits (15%), Food Preferences (10%), and Shared Interests (10%)."
+      }
+    }, {
+      "@type": "Question",
+      "name": "Are user profiles verified?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! Cohabio offers 2-level verification: Level 1 via Email OTP verification and Level 2 via Student ID / Corporate Offer Letter verification to earn the green Roomie Verified badge."
+      }
+    }]
+  }
+  </script>
+
+  <!-- JSON-LD Structured Data Schema 4: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://cohabio.vercel.app"
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Features",
+      "item": "https://cohabio.vercel.app/#features"
+    },{
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Communities",
+      "item": "https://cohabio.vercel.app/#communities"
+    },{
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Waitlist",
+      "item": "https://cohabio.vercel.app/#waitlist"
+    }]
+  }
+  </script>
+
   <!-- Stylesheets & Fonts -->
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <!-- Google Identity Services Web SDK -->
-  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <!-- Firebase Web SDK v10 Compat Libraries -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
 </head>
 
 <body>
@@ -55,25 +148,19 @@
   <header role="banner">
     <div class="header-inner">
       <a href="#" class="logo">
-        <img src="favicon.ico" alt="Cohabio Logo" class="logo-icon">
+        <img src="newfavicon.ico" alt="Cohabio Logo" class="logo-icon">
         <span>Cohabio</span>
       </a>
       
       <nav class="desktop-nav">
         <a href="#features">Features</a>
+        <a href="#demo">Live Demo</a>
         <a href="#communities">Communities</a>
+        <a href="#faq">FAQ</a>
         <a href="#waitlist">Waitlist</a>
       </nav>
       <div class="header-actions">
-        <!-- Google Sign In Button Container -->
-        <!-- TODO: Replace YOUR_GOOGLE_WEB_CLIENT_ID with your real OAuth 2.0 Client ID from Google Cloud Console -->
-        <div id="g_id_onload" data-client_id="YOUR_GOOGLE_WEB_CLIENT_ID" data-context="signin" data-ux_mode="popup"
-          data-callback="handleGoogleCredentialResponse" data-auto_prompt="false">
-        </div>
-        <div class="g_id_signin" data-type="standard" data-shape="pill" data-theme="outline"
-          data-text="signin_with" data-size="large" data-logo_alignment="left">
-        </div>
-        <a href="#waitlist" class="btn btn-primary">Join Waitlist</a>
+        <a href="#waitlist" class="btn btn-primary">Join Waitlist 🚀</a>
       </div>
       <!-- Hamburger for mobile -->
       <button class="hamburger-btn" id="hamburger-btn" aria-label="Open menu">
@@ -184,6 +271,197 @@
     </div>
   </section>
 
+    </div>
+  </section>
+
+  <!-- Key Statistics & Impact Bar -->
+  <section class="stats-section">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-number">10,000+</span>
+        <span class="stat-label">Active Relocators</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">94.8%</span>
+        <span class="stat-label">Match Compatibility</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">100%</span>
+        <span class="stat-label">Verified Profiles</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">₹0</span>
+        <span class="stat-label">Platform Fee</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Premium Interactive App Demo Dashboard -->
+  <section class="interactive-sandbox" id="demo">
+    <div class="section-title">
+      <div class="section-badge">⚡ Live App Preview</div>
+      <h2>Experience Cohabio</h2>
+      <p style="color: var(--neutral-600); margin-top: 0.75rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+        Explore the core features of the Cohabio mobile app right here in your browser.
+      </p>
+    </div>
+
+    <div class="dashboard-container">
+      <div class="dashboard-sidebar">
+        <div class="dashboard-logo">
+          <img src="newfavicon.ico" alt="Cohabio" width="24"> Cohabio Beta
+        </div>
+        <nav class="dashboard-tabs">
+          <button class="tab-btn active" data-target="tab-match">
+            <span class="tab-icon">✨</span> AI Roommate Match
+          </button>
+          <button class="tab-btn" data-target="tab-community">
+            <span class="tab-icon">👥</span> Discover Communities
+          </button>
+          <button class="tab-btn" data-target="tab-assistant">
+            <span class="tab-icon">🤖</span> Relocation Assistant
+          </button>
+        </nav>
+      </div>
+
+      <div class="dashboard-content">
+        <!-- Tab 1: AI Roommate Match -->
+        <div id="tab-match" class="tab-pane active">
+          <div class="sandbox-container">
+            <div class="sandbox-controls">
+              <div style="margin-bottom: 1.5rem; font-weight: 600; color: #fff; font-size: 1.1rem;">1. Set Your Preferences</div>
+              
+              <div class="control-group">
+                <label for="budgetSlider">Max Monthly Budget (₹): <span id="budgetValue">15,000</span></label>
+                <input type="range" id="budgetSlider" min="5000" max="50000" step="1000" value="15000" class="slider-input">
+              </div>
+
+              <div class="control-group">
+                <label for="cleanlinessSelect">Cleanliness Rating (1-5):</label>
+                <select id="cleanlinessSelect" class="select-input">
+                  <option value="5">5/5 — Pristine & Organized</option>
+                  <option value="4" selected>4/5 — Very Clean</option>
+                  <option value="3">3/5 — Moderate / Regular</option>
+                  <option value="2">2/5 — Relaxed</option>
+                </select>
+              </div>
+
+              <div class="control-group">
+                <label for="sleepSelect">Sleep Routine:</label>
+                <select id="sleepSelect" class="select-input">
+                  <option value="night_owl" selected>Night Owl (1am - 9am)</option>
+                  <option value="early_bird">Early Bird (10pm - 6am)</option>
+                  <option value="flexible">Flexible</option>
+                </select>
+              </div>
+
+              <div class="control-group">
+                <label for="foodSelect">Dietary Preference:</label>
+                <select id="foodSelect" class="select-input">
+                  <option value="vegetarian" selected>Vegetarian</option>
+                  <option value="non_veg">Non-Vegetarian</option>
+                  <option value="vegan">Vegan</option>
+                  <option value="any">Any / Flexible</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Live Calculated Result Card -->
+            <div class="sandbox-result-card">
+              <div style="margin-bottom: 1rem; font-weight: 600; color: #fff; font-size: 1.1rem;">2. Discover Top Match</div>
+              
+              <div class="match-score-container">
+                <svg class="circular-chart" viewBox="0 0 36 36">
+                  <path class="circle-bg"
+                    d="M18 2.0845
+                      a 15.9155 15.9155 0 0 1 0 31.831
+                      a 15.9155 15.9155 0 0 1 0 -31.831"
+                  />
+                  <path class="circle" id="scoreCircle"
+                    stroke-dasharray="96, 100"
+                    d="M18 2.0845
+                      a 15.9155 15.9155 0 0 1 0 31.831
+                      a 15.9155 15.9155 0 0 1 0 -31.831"
+                  />
+                  <text x="18" y="20.35" class="percentage" id="matchBadgeText">96%</text>
+                </svg>
+                <div class="score-label">Compatibility Match</div>
+              </div>
+              
+              <div class="result-profile-header">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" alt="Sample Match Avatar" class="result-avatar">
+                <div>
+                  <h3 style="font-size: 1.2rem; color: #fff;">Aanya Sharma, 23</h3>
+                  <p style="font-size: 0.85rem; color: var(--neutral-400);">Product Designer @ Swiggy • Moving to HSR Layout</p>
+                </div>
+              </div>
+              
+              <div class="result-explanation" id="matchExplanation">
+                <strong>Why it's a match:</strong> You both share a vegetarian diet, prefer late nights, and keep things very clean. Aanya's budget also falls comfortably within your range!
+              </div>
+
+              <div class="result-breakdown" id="matchBreakdown">
+                <div class="breakdown-tag">✓ Budget: ₹12k - ₹16k</div>
+                <div class="breakdown-tag">✓ Cleanliness: 4/5</div>
+                <div class="breakdown-tag">✓ Routine: Night Owl</div>
+                <div class="breakdown-tag">✓ Diet: Vegetarian</div>
+                <div class="breakdown-tag">✓ Location: HSR Layout</div>
+              </div>
+              
+              <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="alert('Great choice! In the mobile app, swiping right instantly opens a direct chat room with Aanya.');">
+                Connect with Aanya 💬
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Community Discovery -->
+        <div id="tab-community" class="tab-pane">
+          <div class="community-mock-container">
+            <div class="community-mock-header">
+              <h3>Bangalore Techies & Interns</h3>
+              <span class="community-mock-meta">1,420 Members • 12 Online</span>
+            </div>
+            <div class="community-mock-feed">
+              <div class="feed-post">
+                <div class="post-avatar">K</div>
+                <div class="post-content">
+                  <strong>Karan Singh</strong> <span class="post-time">2h ago</span>
+                  <p>Hey folks! Just got my offer from Flipkart. Anyone looking for a flatmate near Bellandur starting next month?</p>
+                  <div class="post-actions"><span>👍 12</span> <span>💬 4</span></div>
+                </div>
+              </div>
+              <div class="feed-post">
+                <div class="post-avatar" style="background: #a855f7;">P</div>
+                <div class="post-content">
+                  <strong>Priya R.</strong> <span class="post-time">5h ago</span>
+                  <p>Moving from Delhi this weekend. Can anyone recommend a good PG for girls in HSR Layout Sector 2?</p>
+                  <div class="post-actions"><span>👍 8</span> <span>💬 15</span></div>
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-secondary" style="width: 100%; margin-top: 1rem;" onclick="alert('Join the waitlist to access real communities when we launch!');">Join Community 🚀</button>
+          </div>
+        </div>
+
+        <!-- Tab 3: Relocation Assistant -->
+        <div id="tab-assistant" class="tab-pane">
+          <div class="assistant-mock-container">
+            <div class="assistant-mock-messages" id="assistantMockMessages">
+              <div class="mock-message ai">
+                Hello! I'm your AI Relocation Assistant. Where are you moving to, and what's your budget?
+              </div>
+            </div>
+            <div class="assistant-mock-input">
+              <button class="suggestion-btn" onclick="simulateAssistantChat('Moving to Mumbai with a 25k budget')">"Moving to Mumbai, 25k budget"</button>
+              <button class="suggestion-btn" onclick="simulateAssistantChat('Need a PG in Bangalore under 10k')">"PG in Bangalore under 10k"</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Communities Section -->
   <section class="communities-section" id="communities">
     <div class="section-title">
@@ -210,12 +488,52 @@
         <p>BKC, Lower Parel, Andheri — find verified flatmates working in banking, consulting, and fintech.</p>
         <span class="community-meta">620 Members</span>
       </div>
-      <div class="community-card">
-        <div class="community-card-icon">🤝</div>
-        <h3>Hyderabad HITEC City Hub</h3>
-        <p>Connect with professionals relocating to Gachibowli, Madhapur, and the HITEC City corridor.</p>
-        <span class="community-meta">510 Members</span>
-      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Accordion Section -->
+  <section class="faq-section" id="faq">
+    <div class="section-title">
+      <div class="section-badge">❓ FAQ</div>
+      <h2>Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-accordion">
+      <details class="faq-item">
+        <summary class="faq-question">How does Cohabio find compatible people?</summary>
+        <div class="faq-answer">
+          We use a combination of verified identities and detailed lifestyle preferences to find people who match your vibe. Instead of just showing listings, we focus on the people first, ensuring you connect with roommates who share your living style.
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-question">How is compatibility calculated?</summary>
+        <div class="faq-answer">
+          Our algorithm calculates a deterministic percentage based on several weighted factors: Budget Overlap (25%), Cleanliness Rating (20%), Sleep/Work Schedule (20%), Habits/Lifestyle (15%), Food Preferences (10%), and Shared Interests/Hobbies (10%).
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-question">Can I choose my preferences?</summary>
+        <div class="faq-answer">
+          Absolutely. You have full control over your preferences. You can adjust your budget range, set your cleanliness standards, select your sleep routine, and specify dietary choices. The app will only recommend profiles that align with your settings.
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-question">Is my personal information safe?</summary>
+        <div class="faq-answer">
+          Security is our top priority. We use industry-standard encryption and do not share your private data with third parties. Profiles undergo a 2-level verification process (Email OTP & Identity Verification) to ensure a safe and trustworthy community.
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-question">Who can use Cohabio?</summary>
+        <div class="faq-answer">
+          Cohabio is primarily designed for students, fresh graduates, and young professionals who are relocating to new cities and looking for compatible roommates and verified housing options.
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-question">How does the waitlist work?</summary>
+        <div class="faq-answer">
+          By joining the waitlist, you reserve early access to the Cohabio mobile app before its official public launch. You'll receive updates, exclusive invites, and priority placement in our verified communities.
+        </div>
+      </details>
     </div>
   </section>
 
@@ -240,7 +558,7 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <a href="#" class="logo">
-          <img src="favicon.ico" alt="Cohabio Logo" class="logo-icon">
+          <img src="newfavicon.ico" alt="Cohabio Logo" class="logo-icon">
           <span>Cohabio</span>
         </a>
         <p>The community-first relocation platform for students and young professionals. Find verified roommates, local communities, and AI-powered city guides.</p>
@@ -265,7 +583,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 CoHabio Technologies. All rights reserved.</p>
+      <p>© 2026 Cohabio Technologies. All rights reserved.</p>
       <div class="footer-bottom-links">
         <a href="#">Privacy Policy</a>
         <a href="#">Terms of Service</a>
@@ -273,14 +591,16 @@
     </div>
   </footer>
 
-  <!-- Floating AI Chatbot -->
+  <!-- Floating AI Chatbot Container -->
   <div id="chatbot-container" class="chatbot-container hidden">
     <div class="chatbot-header">
       <div class="chatbot-header-info">
-        <div class="chatbot-avatar">🤖</div>
+        <div class="chatbot-avatar">
+          <img src="newfavicon.ico" alt="Cohabio AI" class="chatbot-avatar-img">
+        </div>
         <div>
-          <h4>CoHabio AI</h4>
-          <span class="status-dot"></span><small>Online</small>
+          <h4>Cohabio AI</h4>
+          <span class="status-dot"></span><small>Online &amp; Ready</small>
         </div>
       </div>
       <button id="chatbot-close-btn" class="chatbot-close-btn">&times;</button>
@@ -288,20 +608,33 @@
     
     <div id="chatbot-messages" class="chatbot-messages">
       <div class="message assistant-message">
-        Hi there! 👋 I'm the CoHabio product assistant. What can I tell you about our community-first relocation app?
+        Hi there! 👋 I'm your Cohabio AI Relocation Assistant. Ask me anything about finding verified roommates, communities, budget ranges, or housing!
       </div>
     </div>
     
     <div class="chatbot-input-area">
-      <input type="text" id="chatbot-input" placeholder="Ask anything about CoHabio..." autocomplete="off">
+      <input type="text" id="chatbot-input" placeholder="Ask anything about Cohabio..." autocomplete="off">
       <button id="chatbot-send-btn" class="chatbot-send-btn">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
       </button>
     </div>
   </div>
   
-  <button id="chatbot-trigger" class="chatbot-trigger">
-    <span class="chatbot-trigger-icon">💬</span>
+  <!-- Floating Interactive Chatbot Greeting Tooltip Popup -->
+  <div id="chatbot-greeting-popup" class="chatbot-greeting-popup hidden">
+    <button id="close-greeting-btn" class="close-greeting-btn" aria-label="Close assistant greeting">&times;</button>
+    <div class="greeting-content" id="greeting-content-trigger">
+      <img src="newfavicon.ico" alt="Cohabio Assistant" class="greeting-logo">
+      <div class="greeting-text">
+        <strong>Cohabio AI Assistant ✨</strong>
+        <p>👋 Hi! Need help finding verified roommates or housing?</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Chatbot Trigger Button -->
+  <button id="chatbot-trigger" class="chatbot-trigger" aria-label="Open Cohabio AI Assistant">
+    <img src="newfavicon.ico" alt="Cohabio Assistant Icon" class="chatbot-trigger-icon-img">
   </button>
 
   <script src="script.js"></script>

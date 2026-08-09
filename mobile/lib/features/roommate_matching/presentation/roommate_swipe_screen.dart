@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:cohabio/core/widgets/cohabio_ui.dart';
 import 'package:cohabio/core/providers/roommates_provider.dart';
 
 class RoommateSwipeScreen extends ConsumerStatefulWidget {

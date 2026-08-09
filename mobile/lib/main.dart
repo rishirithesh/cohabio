@@ -6,7 +6,6 @@ import 'package:cohabio/features/communities/presentation/communities_feed_scree
 import 'package:cohabio/features/roommate_matching/presentation/roommate_swipe_screen.dart';
 import 'package:cohabio/features/housing/presentation/housing_screen.dart';
 import 'package:cohabio/features/ai_assistant/presentation/ai_relocation_screen.dart';
-import 'package:cohabio/features/events/presentation/events_screen.dart';
 import 'package:cohabio/features/chat/presentation/chat_list_screen.dart';
 import 'package:cohabio/features/notifications/presentation/notifications_screen.dart';
 import 'package:cohabio/features/profile/presentation/profile_screen.dart';
@@ -85,7 +84,7 @@ class _AppDashboardNavigatorState extends State<AppDashboardNavigator> {
             },
           ),
           IconButton(
-            icon: const Icon(Icons.notifications_outline),
+            icon: const Icon(Icons.notifications_outlined),
             tooltip: 'Notifications',
             onPressed: () {
               Navigator.of(context).push(

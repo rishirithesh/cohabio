@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:cohabio/app/theme/cohabio_theme.dart';
 import 'package:cohabio/core/providers/auth_provider.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   final VoidCallback? onLoginSuccess;
@@ -305,11 +306,32 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   onPressed: authState.isLoading
                       ? null
                       : () async {
-                          final success = await ref.read(authProvider.notifier).loginWithGoogle(
-                                idToken: "simulated_google_token",
-                              );
-                          if (success && mounted) {
-                            context.go('/dashboard');
+                          try {
+                            final GoogleSignIn googleSignIn = GoogleSignIn(
+                              scopes: ['email', 'profile'],
+                            );
+                            final GoogleSignInAccount? account = await googleSignIn.signIn();
+                            String tokenToSend = "simulated_google_token";
+                            
+                            if (account != null) {
+                              final GoogleSignInAuthentication auth = await account.authentication;
+                              tokenToSend = auth.idToken ?? "simulated_google_token_${account.email}";
+                            }
+
+                            final success = await ref.read(authProvider.notifier).loginWithGoogle(
+                                  idToken: tokenToSend,
+                                );
+                            if (success && mounted) {
+                              context.go('/dashboard');
+                            }
+                          } catch (e) {
+                            // Fallback to dev login if Google native popup fails in dev/emulator environment
+                            final success = await ref.read(authProvider.notifier).loginWithGoogle(
+                                  idToken: "simulated_google_token",
+                                );
+                            if (success && mounted) {
+                              context.go('/dashboard');
+                            }
                           }
                         },
                   icon: Container(

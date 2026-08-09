@@ -3,13 +3,19 @@ from app.main import app
 
 client = TestClient(app)
 
+import uuid
+
 def test_waitlist_submission():
+    unique_email = f"waitlist_test_{uuid.uuid4().hex[:8]}@cohabio.com"
     response = client.post("/api/v1/waitlist", json={
-        "email": "test_waitlist_user@cohabio.com",
+        "email": unique_email,
         "full_name": "Test Waitlist User",
         "target_city": "Bangalore"
     })
-    assert response.status_code in [200, 201, 400] # 400 if already exists
+    assert response.status_code in [200, 201]
+    data = response.json()
+    assert data["email"] == unique_email
+    assert data["target_city"] == "Bangalore"
 
 def test_public_bot_chat():
     response = client.post("/api/v1/public/bot/chat", json={

@@ -52,7 +52,7 @@ class ActiveChatNotifier extends StateNotifier<List<dynamic>> {
       final token = await _storage.read(key: "access_token");
       if (token == null) return;
 
-      final host = Platform.isAndroid ? "10.0.2.2:8000" : "localhost:8000";
+      final host = Platform.isAndroid ? "10.0.2.2:8001" : "localhost:8001";
       final wsUrl = "ws://$host/api/v1/chat/ws/$roomId?token=$token";
 
       _webSocket = await WebSocket.connect(wsUrl);

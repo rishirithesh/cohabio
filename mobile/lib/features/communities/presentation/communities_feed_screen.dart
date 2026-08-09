@@ -19,23 +19,24 @@ class _CommunitiesFeedScreenState extends ConsumerState<CommunitiesFeedScreen> {
     final communitiesAsync = ref.watch(communitiesProvider);
 
     return Scaffold(
+      backgroundColor: const Color(0xFF0F172A),
       appBar: AppBar(
         title: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
-              child: Image.asset('assets/images/logo.png', width: 28, height: 28, fit: BoxFit.contain, errorBuilder: (_, __, ___) => const Icon(Icons.people)),
+              child: Image.asset('assets/images/logo.png', width: 28, height: 28, fit: BoxFit.contain, errorBuilder: (_, __, ___) => const Icon(Icons.people, color: Color(0xFF22C55E))),
             ),
             const SizedBox(width: 10),
-            const Text('Communities', style: TextStyle(fontWeight: FontWeight.bold)),
+            const Text('Communities Feed', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
           ],
         ),
-        backgroundColor: Colors.white,
-        elevation: 0.5,
-        foregroundColor: Colors.black,
+        backgroundColor: const Color(0xFF1E293B),
+        elevation: 0,
+        foregroundColor: Colors.white,
         actions: [
-          IconButton(icon: const Icon(Icons.refresh), onPressed: () {
+          IconButton(icon: const Icon(Icons.refresh, color: Colors.white70), onPressed: () {
             ref.read(communitiesProvider.notifier).fetchCommunities(category: _selectedFilter);
           }),
         ],

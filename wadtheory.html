@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Memory Match Game</title>
+    <style>
+      body{
+
+    font-family:Arial;
+
+    text-align:center;
+
+    background:#f2f2f2;
+
+}
+
+#board{
+
+    width:330px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,100px);
+
+    gap:10px;
+
+}
+
+.box{
+
+    width:100px;
+
+    height:100px;
+
+    background:gray;
+
+    border-radius:10px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:40px;
+
+    cursor:pointer;
+
+    color:transparent;
+
+    user-select:none;
+
+    transition:0.3s;
+
+}
+    </style>
+</head>
+
+<body>
+
+<h1>Memory Match Game</h1>
+
+<h2>
+    Score :
+    <span id="score">0</span>
+</h2>
+
+<div id="board">
+
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+
+</div>
+
+<h2 id="message"></h2>
+
+<script>
+  // Fruits + Danger
+
+let items = [
+
+    "🍎","🍎",
+
+    "🍌","🍌",
+
+    "🍇","🍇",
+
+    "🍉","🍉",
+
+    "💀"
+
+];
+
+// Shuffle
+
+items.sort(() => Math.random() - 0.5);
+
+// Get all boxes
+
+let boxes = document.querySelectorAll(".box");
+
+// Variables
+
+let first = null;
+
+let second = null;
+
+let score = 0;
+
+let matchedPairs = 0;
+
+let busy = false;
+
+// Put fruits into boxes
+
+for(let i=0;i<boxes.length;i++)
+{
+
+    boxes[i].innerHTML = items[i];
+
+    boxes[i].addEventListener("click",clickBox);
+
+}
+
+// Click Function
+
+function clickBox(){
+
+    // Ignore while hiding cards
+
+    if(busy)
+        return;
+
+    // Ignore already opened cards
+
+    if(this.style.color=="black")
+        return;
+
+    // Reveal
+
+    this.style.color="black";
+
+    // Danger Box
+
+    if(this.innerHTML=="💀")
+    {
+
+        alert("Danger Box! Game Over");
+
+        score = 0;
+
+        document.getElementById("score").innerHTML = score;
+
+        location.reload();
+
+        return;
+
+    }
+
+    // First Selection
+
+    if(first==null)
+    {
+
+        first=this;
+
+    }
+
+    // Second Selection
+
+    else
+    {
+
+        second=this;
+
+        compare();
+
+    }
+
+}
+
+// Compare Function
+
+function compare(){
+
+    // Match
+
+    if(first.innerHTML==second.innerHTML)
+    {
+
+        score+=10;
+
+        document.getElementById("score").innerHTML=score;
+
+        let color=randomColor();
+
+        first.style.background=color;
+
+        second.style.background=color;
+
+        matchedPairs++;
+
+        first=null;
+
+        second=null;
+
+        // All pairs matched
+
+        if(matchedPairs==4)
+        {
+
+            document.getElementById("message").innerHTML="🎉 Congratulations! You Won.";
+
+        }
+
+    }
+
+    // Not Match
+
+    else
+    {
+
+        busy=true;
+
+        setTimeout(function(){
+
+            first.style.color="transparent";
+
+            second.style.color="transparent";
+
+            first=null;
+
+            second=null;
+
+            busy=false;
+
+        },800);
+
+    }
+
+}
+
+// Random Color
+
+function randomColor(){
+
+    let letters="0123456789ABCDEF";
+
+    let color="#";
+
+    for(let i=0;i<6;i++)
+    {
+
+        color+=letters[Math.floor(Math.random()*16)];
+
+    }
+
+    return color;
+
+}
+</script>
+
+
+</body>
+</html>

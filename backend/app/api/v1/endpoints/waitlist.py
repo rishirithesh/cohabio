@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 from app.db.session import get_db
 from app.models.models import Waitlist
 from app.schemas.schemas import WaitlistCreate, WaitlistResponse
+from app.services.email_service import EmailService
 from typing import List
 
 router = APIRouter()
@@ -25,6 +26,17 @@ def add_to_waitlist(data: WaitlistCreate, db: Session = Depends(get_db)):
     db.add(entry)
     db.commit()
     db.refresh(entry)
+
+    # Dispatch automatic SMTP confirmation email
+    try:
+        EmailService.send_waitlist_confirmation(
+            to_email=entry.email,
+            user_name=entry.full_name or "Friend",
+            target_city=entry.target_city or "your destination city"
+        )
+    except Exception as e:
+        print(f"Failed to dispatch waitlist confirmation email: {e}")
+
     return entry
 
 @router.get("/", response_model=List[WaitlistResponse])

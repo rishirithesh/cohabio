@@ -143,6 +143,8 @@
 </head>
 
 <body>
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress-bar" id="scrollProgressBar"></div>
 
   <!-- Glassmorphism Header -->
   <header role="banner">
@@ -329,11 +331,24 @@
         <div id="tab-match" class="tab-pane active">
           <div class="sandbox-container">
             <div class="sandbox-controls">
-              <div style="margin-bottom: 1.5rem; font-weight: 600; color: #fff; font-size: 1.1rem;">1. Set Your Preferences</div>
+              <div style="margin-bottom: 1.25rem; font-weight: 700; color: #fff; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center;">
+                <span>1. Set Your Preferences</span>
+                <span style="font-size: 0.75rem; background: rgba(16, 185, 129, 0.2); color: var(--primary); padding: 0.2rem 0.6rem; border-radius: 99px;">Live Algo Engine</span>
+              </div>
               
               <div class="control-group">
+                <label for="citySelect">Target City Hub:</label>
+                <select id="citySelect" class="select-input">
+                  <option value="bangalore" selected>📍 Bangalore (HSR / Koramangala / Indiranagar)</option>
+                  <option value="mumbai">📍 Mumbai (BKC / Andheri / Powai)</option>
+                  <option value="hyderabad">📍 Hyderabad (HITEC City / Gachibowli)</option>
+                  <option value="gurgaon">📍 Gurgaon (Cyber City / Golf Course)</option>
+                </select>
+              </div>
+
+              <div class="control-group">
                 <label for="budgetSlider">Max Monthly Budget (₹): <span id="budgetValue">15,000</span></label>
-                <input type="range" id="budgetSlider" min="5000" max="50000" step="1000" value="15000" class="slider-input">
+                <input type="range" id="budgetSlider" min="8000" max="50000" step="1000" value="15000" class="slider-input">
               </div>
 
               <div class="control-group">
@@ -351,7 +366,7 @@
                 <select id="sleepSelect" class="select-input">
                   <option value="night_owl" selected>Night Owl (1am - 9am)</option>
                   <option value="early_bird">Early Bird (10pm - 6am)</option>
-                  <option value="flexible">Flexible</option>
+                  <option value="flexible">Flexible Schedule</option>
                 </select>
               </div>
 
@@ -367,8 +382,11 @@
             </div>
 
             <!-- Live Calculated Result Card -->
-            <div class="sandbox-result-card">
-              <div style="margin-bottom: 1rem; font-weight: 600; color: #fff; font-size: 1.1rem;">2. Discover Top Match</div>
+            <div class="sandbox-result-card" id="resultCard">
+              <div style="margin-bottom: 0.75rem; font-weight: 700; color: #fff; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center;">
+                <span>2. Top Match Found</span>
+                <span id="matchRankBadge" style="font-size: 0.75rem; background: rgba(14, 165, 229, 0.2); color: var(--accent); padding: 0.25rem 0.6rem; border-radius: 99px; font-weight: 700;">Rank #1 of 6 Profiles</span>
+              </div>
               
               <div class="match-score-container">
                 <svg class="circular-chart" viewBox="0 0 36 36">
@@ -385,14 +403,17 @@
                   />
                   <text x="18" y="20.35" class="percentage" id="matchBadgeText">96%</text>
                 </svg>
-                <div class="score-label">Compatibility Match</div>
+                <div>
+                  <div class="score-label" id="scoreLabelText">Compatibility Match</div>
+                  <small id="scoreSubText" style="color: var(--neutral-400); font-size: 0.75rem;">Based on 6 weighted factors</small>
+                </div>
               </div>
               
-              <div class="result-profile-header">
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" alt="Sample Match Avatar" class="result-avatar">
+              <div class="result-profile-header" id="profileHeader">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200" alt="Sample Match Avatar" class="result-avatar" id="matchAvatar">
                 <div>
-                  <h3 style="font-size: 1.2rem; color: #fff;">Aanya Sharma, 23</h3>
-                  <p style="font-size: 0.85rem; color: var(--neutral-400);">Product Designer @ Swiggy • Moving to HSR Layout</p>
+                  <h3 style="font-size: 1.2rem; color: #fff;" id="matchName">Aanya Sharma, 23</h3>
+                  <p style="font-size: 0.85rem; color: var(--neutral-400);" id="matchRole">Product Designer @ Swiggy • Moving to HSR Layout</p>
                 </div>
               </div>
               
@@ -408,9 +429,14 @@
                 <div class="breakdown-tag">✓ Location: HSR Layout</div>
               </div>
               
-              <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="alert('Great choice! In the mobile app, swiping right instantly opens a direct chat room with Aanya.');">
-                Connect with Aanya 💬
-              </button>
+              <div style="margin-top: 1.25rem; display: flex; gap: 0.75rem;">
+                <button class="btn btn-primary" style="flex: 1;" id="connectBtn">
+                  Connect with Aanya 💬
+                </button>
+                <button class="btn btn-secondary" style="padding: 0.75rem 1rem; border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); color: #fff;" id="nextCandidateBtn" title="View Next Top Match">
+                  Next Match ➔
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -573,18 +599,19 @@
         </ul>
       </div>
       <div class="footer-links">
-        <h5>Company</h5>
+        <h5>Connect</h5>
         <ul>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="mailto:founder.cohabio@gmail.com">Contact</a></li>
+          <li><a href="https://linkedin.com/in/rishirithesh" target="_blank" rel="noopener noreferrer">LinkedIn 🔗</a></li>
+          <li><a href="https://instagram.com/rishi_rithesh" target="_blank" rel="noopener noreferrer">Instagram 📸</a></li>
+          <li><a href="mailto:founder.cohabio@gmail.com">Contact Founder</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
       <p>© 2026 Cohabio Technologies. All rights reserved.</p>
       <div class="footer-bottom-links">
+        <a href="https://linkedin.com/in/rishirithesh" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://instagram.com/rishi_rithesh" target="_blank" rel="noopener noreferrer">Instagram</a>
         <a href="#">Privacy Policy</a>
         <a href="#">Terms of Service</a>
       </div>
@@ -631,6 +658,9 @@
       </div>
     </div>
   </div>
+
+  <!-- Floating Back to Top Button -->
+  <button id="backToTopBtn" class="back-to-top-btn" aria-label="Scroll back to top">↑</button>
 
   <!-- Floating Chatbot Trigger Button -->
   <button id="chatbot-trigger" class="chatbot-trigger" aria-label="Open Cohabio AI Assistant">

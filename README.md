@@ -3,6 +3,8 @@
 > **AI-Powered Relocation, Roommate Matching & Verified Student Communities Platform**
 
 **Founder**: Rishi Rithesh  
+**Co-Founder**: Sathiya Priyan R, Justin Benito
+**Funded By**: tonesofmadras, snuchennai, angel.investors
 **License**: MIT  
 **Platform**: iOS, Android & Web  
 

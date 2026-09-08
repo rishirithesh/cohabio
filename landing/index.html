@@ -4,38 +4,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cohabio — AI Roommate Matching & Community Relocation Platform</title>
+  <title>Cohabio | Find Your People. Find Your Place.</title>
   <meta name="description"
-    content="Cohabio is a community-first AI relocation platform for students and young professionals. Find verified roommates, local communities, student housing, and AI relocation guides.">
+    content="Cohabio is a friendly, community-first AI relocation platform for students and young professionals. Find verified roommates, discover curated housing, join city meetups, and get AI relocation guides.">
   <meta name="keywords"
-    content="roommate finder, verified roommates, student housing, relocation app, Bangalore roommates, Mumbai PGs, AI roommate match, cohabio">
+    content="roommate finder, verified roommates, student housing, relocation app, Bangalore roommates, Mumbai PGs, AI roommate match, cohabio, relocation cost calculator, roommate agreement">
   <meta name="author" content="Cohabio Technologies">
   <meta name="robots" content="index, follow, max-image-preview:large">
 
-  <!-- OpenGraph Metadata for Social Media & Web Crawlers -->
-  <meta property="og:title" content="Cohabio — Find Your People. Find Your Place.">
+  <!-- OpenGraph Metadata -->
+  <meta property="og:title" content="Cohabio — Find Your People, Find Your Place.">
   <meta property="og:description"
-    content="Community-first relocation & verified roommate matching platform for students and young professionals.">
+    content="Friendly, community-first relocation & verified roommate matching platform for students and young professionals.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://cohabio.vercel.app">
   <meta property="og:image" content="https://cohabio.vercel.app/newfavicon.ico">
   <meta property="og:site_name" content="Cohabio">
 
-  <!-- Twitter Card Metadata -->
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@cohabio">
-  <meta name="twitter:creator" content="@cohabio">
   <meta name="twitter:title" content="Cohabio — AI Roommate Matching & Community Relocation Platform">
-  <meta name="twitter:description" content="Find verified roommates, local city communities, and AI relocation guides before you move.">
+  <meta name="twitter:description"
+    content="Find verified roommates, explore student housing, join city mixers, and get AI relocation guides before you move.">
   <meta name="twitter:image" content="https://cohabio.vercel.app/newfavicon.ico">
 
   <link rel="icon" type="image/x-icon" href="newfavicon.ico">
   <link rel="shortcut icon" type="image/x-icon" href="newfavicon.ico">
-  <!-- SEO & Canonical Metadata -->
   <link rel="canonical" href="https://cohabio.vercel.app">
   <meta name="theme-color" content="#10B981">
 
-  <!-- JSON-LD Structured Data Schema 1: SoftwareApplication -->
+  <!-- JSON-LD Structured Data Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -48,7 +46,7 @@
       "price": "0",
       "priceCurrency": "USD"
     },
-    "description": "Community-first AI relocation platform for students and young professionals. Find verified roommates, local communities, housing, and AI relocation assistance.",
+    "description": "Friendly, community-first AI relocation platform for students and young professionals. Find verified roommates, local communities, housing, and AI relocation assistance.",
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
@@ -57,529 +55,717 @@
   }
   </script>
 
-  <!-- JSON-LD Structured Data Schema 2: Organization -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Cohabio Technologies",
-    "url": "https://cohabio.vercel.app",
-    "logo": "https://cohabio.vercel.app/newfavicon.ico",
-    "sameAs": [
-      "https://twitter.com/cohabio",
-      "https://github.com/rishirithesh/cohabio"
-    ]
-  }
-  </script>
-
-  <!-- JSON-LD Structured Data Schema 3: FAQPage -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [{
-      "@type": "Question",
-      "name": "How does Google Sign-In work on Cohabio?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Cohabio uses Google Identity Services & Firebase Auth for instant, single-click sign-in. Your account is automatically created and linked to your verified email address."
-      }
-    }, {
-      "@type": "Question",
-      "name": "How is the Roommate Compatibility Score calculated?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Our 6-factor algorithm evaluates Budget Overlap (25%), Cleanliness Rating (20%), Sleep/Work Schedule (20%), Habits (15%), Food Preferences (10%), and Shared Interests (10%)."
-      }
-    }, {
-      "@type": "Question",
-      "name": "Are user profiles verified?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes! Cohabio offers 2-level verification: Level 1 via Email OTP verification and Level 2 via Student ID / Corporate Offer Letter verification to earn the green Roomie Verified badge."
-      }
-    }]
-  }
-  </script>
-
-  <!-- JSON-LD Structured Data Schema 4: BreadcrumbList -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [{
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://cohabio.vercel.app"
-    },{
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Features",
-      "item": "https://cohabio.vercel.app/#features"
-    },{
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Communities",
-      "item": "https://cohabio.vercel.app/#communities"
-    },{
-      "@type": "ListItem",
-      "position": 4,
-      "name": "Waitlist",
-      "item": "https://cohabio.vercel.app/#waitlist"
-    }]
-  }
-  </script>
-
-  <!-- Stylesheets & Fonts -->
+  <!-- Google Fonts: Outfit (Headings) & Plus Jakarta Sans (Clean Body) -->
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Firebase Web SDK v10 Compat Libraries -->
-  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
 </head>
 
 <body>
-  <!-- Scroll Progress Bar -->
+  <!-- Custom Fluid Cursor Follower -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-aura" id="cursorAura"></div>
+
+  <!-- Confetti Canvas for Celebrations & VIP Pass -->
+  <canvas id="confettiCanvas" class="confetti-canvas"></canvas>
+
+  <!-- Ambient Glowing Aurora Elements -->
+  <div class="aurora-glow aurora-glow-1"></div>
+  <div class="aurora-glow aurora-glow-2"></div>
+
+  <!-- Scroll Progress Indicator -->
   <div class="scroll-progress-bar" id="scrollProgressBar"></div>
 
   <!-- Glassmorphism Header -->
   <header role="banner">
     <div class="header-inner">
-      <a href="#" class="logo">
+      <a href="#" class="logo" data-magnet="true">
         <img src="newfavicon.ico" alt="Cohabio Logo" class="logo-icon">
         <span>Cohabio</span>
       </a>
-      
+
+      <!-- Minimalistic, Professional Desktop Navigation -->
       <nav class="desktop-nav">
-        <a href="#features">Features</a>
-        <a href="#demo">Live Demo</a>
-        <a href="#communities">Communities</a>
-        <a href="#faq">FAQ</a>
-        <a href="#waitlist">Waitlist</a>
+        <a href="#mobile-app" class="nav-link">Live App</a>
+
+        <!-- Tools Dropdown -->
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+            <span>Tools</span>
+            <svg class="chevron-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="#estimator" class="dropdown-item">
+              <div class="dropdown-icon-box">💰</div>
+              <div>
+                <strong class="item-title">Cost Estimator</strong>
+                <span class="item-desc">Calculate rent, deposits & living costs</span>
+              </div>
+            </a>
+            <a href="#checklist" class="dropdown-item">
+              <div class="dropdown-icon-box">📋</div>
+              <div>
+                <strong class="item-title">Moving Checklist</strong>
+                <span class="item-desc">Milestone planner with saved progress</span>
+              </div>
+            </a>
+            <a href="#mobile-app" class="dropdown-item" onclick="switchAppScreen('tab-agreement-app')">
+              <div class="dropdown-icon-box">📝</div>
+              <div>
+                <strong class="item-title">Living Charter Builder</strong>
+                <span class="item-desc">Generate flatmate house rules</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Explore Dropdown -->
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+            <span>Explore</span>
+            <svg class="chevron-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="#housing" class="dropdown-item">
+              <div class="dropdown-icon-box">🏡</div>
+              <div>
+                <strong class="item-title">Verified Housing</strong>
+                <span class="item-desc">Curated PGs & zero-broker flats</span>
+              </div>
+            </a>
+            <a href="#events" class="dropdown-item">
+              <div class="dropdown-icon-box">🎟️</div>
+              <div>
+                <strong class="item-title">City Welcome Mixers</strong>
+                <span class="item-desc">Free RSVP meetups for relocators</span>
+              </div>
+            </a>
+            <a href="#communities" class="dropdown-item">
+              <div class="dropdown-icon-box">👥</div>
+              <div>
+                <strong class="item-title">College & City Hubs</strong>
+                <span class="item-desc">Connect with techies & alumni</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <a href="#features" class="nav-link">Why Cohabio</a>
       </nav>
+
+      <!-- Header Actions: Quick Command Search + VIP Beta Button -->
       <div class="header-actions">
-        <a href="#waitlist" class="btn btn-primary">Join Waitlist 🚀</a>
+        <button class="nav-search-btn" id="openCommandPaletteBtn" title="Quick Search (Ctrl + K)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <span class="search-label">Quick Search...</span>
+          <kbd class="kbd-pill">⌘K</kbd>
+        </button>
+        <a href="#waitlist" class="btn btn-primary btn-shine" data-magnet="true">Join VIP Beta 🚀</a>
       </div>
-      <!-- Hamburger for mobile -->
+
+      <!-- Mobile Hamburger -->
       <button class="hamburger-btn" id="hamburger-btn" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </header>
 
-  <!-- Mobile Navigation -->
+  <!-- Mobile Drawer Navigation -->
   <nav class="mobile-nav" id="mobile-nav">
-    <a href="#features" class="mobile-nav-link">Features</a>
-    <a href="#communities" class="mobile-nav-link">Communities</a>
-    <a href="#waitlist" class="mobile-nav-link">Join Waitlist 🚀</a>
+    <div class="mobile-nav-group">
+      <div class="mobile-nav-title">Experience</div>
+      <a href="#mobile-app" class="mobile-nav-link">📱 Live Mobile App Demo</a>
+      <a href="#housing" class="mobile-nav-link">🏡 Verified Housing Marketplace</a>
+      <a href="#events" class="mobile-nav-link">🎟️ City Welcome Mixers</a>
+    </div>
+    <div class="mobile-nav-group">
+      <div class="mobile-nav-title">Relocation Tools</div>
+      <a href="#estimator" class="mobile-nav-link">💰 City Cost Estimator</a>
+      <a href="#checklist" class="mobile-nav-link">📋 Moving Checklist</a>
+      <a href="#mobile-app" class="mobile-nav-link" onclick="switchAppScreen('tab-agreement-app')">📝 Roommate Living Charter</a>
+      <a href="#communities" class="mobile-nav-link">👥 College &amp; City Hubs</a>
+    </div>
+    <div class="mobile-nav-group">
+      <a href="#waitlist" class="btn btn-primary btn-sm" style="width: 100%; text-align: center; margin-top: 0.5rem;">Join VIP Beta 🚀</a>
+    </div>
   </nav>
 
   <!-- Hero Section -->
   <section class="hero">
-    <div class="badge">🚀 Community-First Relocation Platform</div>
-    <h1>Find Your People.<br><span>Find Your Place.</span></h1>
-    <p>Relocating to a new city shouldn't be lonely or chaotic. Cohabio connects you with trusted roommates, verified
-      communities, and AI-powered city guides before you move.</p>
+    <div class="badge shiny-badge" data-magnet="true">
+      <span class="badge-sparkle">✨</span> Community-First Relocation &amp; Roommate Platform
+    </div>
+    <h1 class="hero-heading">
+      Find Your People.<br>
+      <span class="gradient-text">Find Your Place.</span>
+    </h1>
+    <p class="hero-subtext">
+      Moving to a new city shouldn't feel overwhelming. Cohabio connects you with trusted, verified roommates, curated student &amp; fresher housing, local college hubs, and AI moving guides.
+    </p>
 
     <div class="hero-actions">
-      <a href="#waitlist" class="btn btn-hero-primary">Get Early Access</a>
-      <button
-        onclick="alert('Android App is currently in development/testing. Join the waitlist to be notified upon Google Play Store launch!');"
-        class="btn btn-hero-secondary">
-        📱 Download the App
-      </button>
+      <a href="#mobile-app" class="btn btn-hero-primary btn-shine" data-magnet="true">
+        <span>📱 Test Live Mobile App</span>
+      </a>
+      <a href="#waitlist" class="btn btn-hero-secondary" data-magnet="true">
+        <span>✨ Get VIP Early Access</span>
+      </a>
     </div>
 
-    <!-- App Interactive Mockup Preview -->
-    <div class="app-preview-wrapper">
-      <div class="mockup-header">
-        <div class="dots">
-          <div class="dot red"></div>
-          <div class="dot yellow"></div>
-          <div class="dot green"></div>
-        </div>
-        <div style="font-weight: 600; font-size: 0.85rem; color: var(--neutral-600);">Cohabio App Live Preview</div>
-        <div style="width: 50px;"></div>
-      </div>
-
-      <div class="preview-grid">
-        <!-- Community Card -->
-        <div class="card">
-          <div class="card-tag">Verified Community</div>
-          <h3 style="margin-bottom: 0.5rem; font-size: 1.1rem;">Bangalore Techies & Interns</h3>
-          <p style="font-size: 0.9rem; color: var(--neutral-600); margin-bottom: 1rem;">1,420 members • Active today</p>
-          <div style="font-size: 0.85rem; background: var(--neutral-100); padding: 0.75rem; border-radius: 8px;">
-            💬 <strong>Rahul S.:</strong> "Anyone moving near HSR Layout around May 1st? Looking for 1 flatmate!"
-          </div>
-        </div>
-
-        <!-- Roommate Match Card -->
-        <div class="card">
-          <span class="match-badge">94% Compatible</span>
-          <div class="card-tag">AI Recommended Roommate</div>
-          <h3 style="margin-bottom: 0.25rem; font-size: 1.1rem;">Rohan Sharma, 22</h3>
-          <p style="font-size: 0.85rem; color: var(--neutral-600); margin-bottom: 0.75rem;">SDE Intern @ Google • Delhi
-            to Bangalore</p>
-          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-            <span
-              style="font-size: 0.75rem; background: var(--primary-light); color: var(--primary); padding: 0.25rem 0.5rem; border-radius: 4px; font-weight: 600;">Night
-              Owl</span>
-            <span
-              style="font-size: 0.75rem; background: var(--primary-light); color: var(--primary); padding: 0.25rem 0.5rem; border-radius: 4px; font-weight: 600;">Vegetarian</span>
-            <span
-              style="font-size: 0.75rem; background: var(--primary-light); color: var(--primary); padding: 0.25rem 0.5rem; border-radius: 4px; font-weight: 600;">Clean
-              Rating: 4/5</span>
-          </div>
-        </div>
-      </div>
+    <!-- Quick Trust Badges -->
+    <div class="hero-trust-bar">
+      <div class="trust-item"><span>🔒</span> 100% ID &amp; Email Verified</div>
+      <div class="trust-item"><span>🤝</span> Zero Brokerage Fees</div>
+      <div class="trust-item"><span>⚡</span> Powered by Gemini 1.5 AI</div>
+      <div class="trust-item"><span>🎓</span> 1,400+ Students &amp; Techies</div>
     </div>
   </section>
 
-  <!-- Features Section -->
-  <section class="features" id="features">
+  <!-- REAL WORKING MOBILE APP SIMULATOR SECTION -->
+  <section class="mobile-app-section" id="mobile-app">
     <div class="section-title">
-      <div class="section-badge">✦ Why We're Different</div>
-      <h2>Built for Real Relocators</h2>
-      <p style="color: var(--neutral-600); margin-top: 0.75rem; max-width: 560px; margin-left: auto; margin-right: auto;">We build community first so you feel at home before
-        unpacking your bags.</p>
-    </div>
-
-    <div class="feature-grid">
-      <div class="feature-card">
-        <div class="feature-icon">🌐</div>
-        <h3>City &amp; Niche Communities</h3>
-        <p style="color: var(--neutral-600); font-size: 0.95rem; margin-top: 0.5rem;">Connect with students from your
-          college, people speaking your native language, or fellow freshers moving to your new city.</p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-icon">🤝</div>
-        <h3>Algorithmic Matchmaking</h3>
-        <p style="color: var(--neutral-600); font-size: 0.95rem; margin-top: 0.5rem;">Our 6-factor algorithm matches
-          roomies by budget overlap, cleanliness ratings, sleep schedules, food habits, and pets.</p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-icon">✨</div>
-        <h3>Gemini AI Assistant</h3>
-        <p style="color: var(--neutral-600); font-size: 0.95rem; margin-top: 0.5rem;">Ask natural questions like
-          <em>"Moving to Bangalore with ₹15k budget"</em> to receive instant area recommendations and relocation
-          timelines.</p>
-      </div>
-    </div>
-  </section>
-
-    </div>
-  </section>
-
-  <!-- Key Statistics & Impact Bar -->
-  <section class="stats-section">
-    <div class="stats-grid">
-      <div class="stat-item">
-        <span class="stat-number">10,000+</span>
-        <span class="stat-label">Active Relocators</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">94.8%</span>
-        <span class="stat-label">Match Compatibility</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">100%</span>
-        <span class="stat-label">Verified Profiles</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">₹0</span>
-        <span class="stat-label">Platform Fee</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Premium Interactive App Demo Dashboard -->
-  <section class="interactive-sandbox" id="demo">
-    <div class="section-title">
-      <div class="section-badge">⚡ Live App Preview</div>
-      <h2>Experience Cohabio</h2>
-      <p style="color: var(--neutral-600); margin-top: 0.75rem; max-width: 600px; margin-left: auto; margin-right: auto;">
-        Explore the core features of the Cohabio mobile app right here in your browser.
+      <div class="section-badge">📱 Interactive Flutter App Preview</div>
+      <h2>Experience The Cohabio Mobile App</h2>
+      <p class="section-desc">
+        Try the real features from our mobile application directly in your browser. Swipe roommate cards, explore verified housing, RSVP to city meetups, and generate roommate agreements!
       </p>
     </div>
 
-    <div class="dashboard-container">
-      <div class="dashboard-sidebar">
-        <div class="dashboard-logo">
-          <img src="newfavicon.ico" alt="Cohabio" width="24"> Cohabio Beta
+    <!-- App Feature Switcher Bar -->
+    <div class="app-switcher-tabs">
+      <button class="app-tab-btn active" data-app-tab="tab-swipe">
+        <span>🎴</span> Roommate Discovery
+      </button>
+      <button class="app-tab-btn" data-app-tab="tab-housing-app">
+        <span>🏡</span> Housing Marketplace
+      </button>
+      <button class="app-tab-btn" data-app-tab="tab-events-app">
+        <span>🎟️</span> City Mixers &amp; Events
+      </button>
+      <button class="app-tab-btn" data-app-tab="tab-agreement-app">
+        <span>📝</span> Agreement Builder
+      </button>
+      <button class="app-tab-btn" data-app-tab="tab-copilot-app">
+        <span>🤖</span> Gemini AI Copilot
+      </button>
+    </div>
+
+    <!-- Device Simulator Container -->
+    <div class="device-simulator-wrapper" data-spotlight="true">
+      <div class="phone-frame" data-tilt="true">
+        <!-- Phone Speaker & Camera Notch -->
+        <div class="phone-notch">
+          <div class="camera-lens"></div>
+          <div class="speaker-grill"></div>
         </div>
-        <nav class="dashboard-tabs">
-          <button class="tab-btn active" data-target="tab-match">
-            <span class="tab-icon">✨</span> AI Roommate Match
-          </button>
-          <button class="tab-btn" data-target="tab-community">
-            <span class="tab-icon">👥</span> Discover Communities
-          </button>
-          <button class="tab-btn" data-target="tab-assistant">
-            <span class="tab-icon">🤖</span> Relocation Assistant
-          </button>
-        </nav>
+
+        <!-- Phone Screen Content -->
+        <div class="phone-screen">
+          <!-- Screen Header -->
+          <div class="screen-header">
+            <div class="screen-logo">
+              <img src="newfavicon.ico" alt="Cohabio" width="22">
+              <span id="screenTitleText">Cohabio Match</span>
+            </div>
+            <div class="screen-status-badge">
+              <span class="live-dot"></span> Online
+            </div>
+          </div>
+
+          <!-- SCREEN VIEW 1: SWIPEABLE ROOMMATE DISCOVERY -->
+          <div class="screen-view active" id="tab-swipe">
+            <div class="swipe-deck-container">
+              <div class="deck-controls-row">
+                <select id="swipeCityFilter" class="phone-select">
+                  <option value="all">📍 All Tech Hubs</option>
+                  <option value="bangalore" selected>📍 Bangalore</option>
+                  <option value="mumbai">📍 Mumbai</option>
+                  <option value="hyderabad">📍 Hyderabad</option>
+                  <option value="gurgaon">📍 Gurgaon</option>
+                  <option value="pune">📍 Pune</option>
+                </select>
+                <div class="compatibility-dial-badge" id="deckCompatBadge">96% Match</div>
+              </div>
+
+              <!-- Main Swipe Card -->
+              <div class="tinder-card" id="activeSwipeCard">
+                <div class="card-image-wrapper">
+                  <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400" alt="Roommate" id="cardAvatar" class="card-hero-img">
+                  <div class="card-gradient-overlay"></div>
+                  <div class="card-floating-badge" id="cardVerifyBadge">✓ Roomie Verified</div>
+                  <div class="card-info-bottom">
+                    <div class="card-title-row">
+                      <h3 id="cardNameAge">Aanya Iyer, 23</h3>
+                      <span class="budget-pill" id="cardBudget">₹15,000/mo</span>
+                    </div>
+                    <p class="card-sub-role" id="cardRole">Data Analyst @ Amazon • Moving to HSR Layout</p>
+                    <div class="card-tags-list" id="cardTags">
+                      <span class="m-tag">🌙 Night Owl</span>
+                      <span class="m-tag">🥗 Vegetarian</span>
+                      <span class="m-tag">✨ Clean: 5/5</span>
+                      <span class="m-tag">☕ Coffee Lover</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Swipe Action Buttons -->
+              <div class="swipe-actions-bar">
+                <button class="action-circle btn-rewind" id="swipeRewindBtn" title="Rewind previous profile" data-magnet="true">
+                  <span>↺</span>
+                </button>
+                <button class="action-circle btn-pass" id="swipePassBtn" title="Pass profile" data-magnet="true">
+                  <span>✕</span>
+                </button>
+                <button class="action-circle btn-superlike" id="swipeSuperlikeBtn" title="Superlike & Priority Ping" data-magnet="true">
+                  <span>⭐</span>
+                </button>
+                <button class="action-circle btn-like" id="swipeLikeBtn" title="Connect & Match" data-magnet="true">
+                  <span>❤️</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- SCREEN VIEW 2: HOUSING & PG MARKETPLACE -->
+          <div class="screen-view" id="tab-housing-app">
+            <div class="housing-app-container">
+              <div class="housing-filter-bar">
+                <select id="housingCitySelect" class="phone-select">
+                  <option value="bangalore" selected>📍 Bangalore</option>
+                  <option value="mumbai">📍 Mumbai</option>
+                  <option value="hyderabad">📍 Hyderabad</option>
+                  <option value="gurgaon">📍 Gurgaon</option>
+                </select>
+                <select id="housingTypeSelect" class="phone-select">
+                  <option value="all" selected>All Rooms</option>
+                  <option value="pg_shared">Shared PG</option>
+                  <option value="flat_share">Flatshare</option>
+                  <option value="private">1 BHK Private</option>
+                </select>
+              </div>
+
+              <div class="housing-cards-stream" id="housingStream">
+                <!-- Injected via JS -->
+              </div>
+            </div>
+          </div>
+
+          <!-- SCREEN VIEW 3: CITY MIXERS & EVENTS -->
+          <div class="screen-view" id="tab-events-app">
+            <div class="events-app-container">
+              <div class="events-hero-header">
+                <h4>🌆 Relocation Mixers &amp; Meetups</h4>
+                <p>Meet roommates and friendly locals before moving!</p>
+              </div>
+              <div class="events-cards-stream" id="eventsStream">
+                <!-- Injected via JS -->
+              </div>
+            </div>
+          </div>
+
+          <!-- SCREEN VIEW 4: ROOMMATE AGREEMENT BUILDER -->
+          <div class="screen-view" id="tab-agreement-app">
+            <div class="agreement-app-container">
+              <div class="agreement-intro">
+                <h4>📝 Flatmate Living Agreement</h4>
+                <p>Prevent conflicts before they happen. Set custom household rules in seconds!</p>
+              </div>
+
+              <div class="agreement-form">
+                <div class="agree-group">
+                  <label>🧹 Cleaning &amp; Chores Schedule:</label>
+                  <select id="agreeCleaning" class="phone-select">
+                    <option value="weekly_rotation" selected>🔄 Weekly Rotational Chores</option>
+                    <option value="cook_maid">👩‍🍳 Shared Cook &amp; Daily Maid</option>
+                    <option value="self_clean">🧹 Clean Your Own Room + Shared Weekend Cleaning</option>
+                  </select>
+                </div>
+
+                <div class="agree-group">
+                  <label>🌙 Quiet Hours &amp; Work Routine:</label>
+                  <select id="agreeQuiet" class="phone-select">
+                    <option value="11pm_7am" selected>🌙 11:00 PM – 7:00 AM (Standard)</option>
+                    <option value="1am_9am">⚡ 1:00 AM – 9:00 AM (Night Owls)</option>
+                    <option value="flexible">🎧 Flexible (Headphones in Common Areas)</option>
+                  </select>
+                </div>
+
+                <div class="agree-group">
+                  <label>👥 Overnight Guests Policy:</label>
+                  <select id="agreeGuests" class="phone-select">
+                    <option value="prior_heads_up" selected>💬 24-hr Prior Notice in Group Chat</option>
+                    <option value="weekend_only">📅 Weekends Only</option>
+                    <option value="flexible">✨ Fully Flexible with Common Courtesy</option>
+                  </select>
+                </div>
+
+                <div class="agree-group">
+                  <label>💰 Shared Bills &amp; Grocery Split:</label>
+                  <select id="agreeSplit" class="phone-select">
+                    <option value="equal_split" selected>⚖️ Equal 50/50 Split via Splitwise</option>
+                    <option value="pro_rata">📊 Pro-Rata by Room Size &amp; AC Usage</option>
+                    <option value="individual">🛒 Individual Groceries, Shared Wifi/Power</option>
+                  </select>
+                </div>
+
+                <button class="btn btn-primary btn-sm" id="generateAgreementBtn" style="width: 100%; margin-top: 0.5rem;">
+                  ✨ Generate Agreement Summary
+                </button>
+              </div>
+
+              <div class="agreement-output hidden" id="agreementOutputBox">
+                <div class="agreement-badge">✓ Agreement Draft Ready</div>
+                <pre class="agreement-text" id="agreementTextDisplay"></pre>
+                <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+                  <button class="btn btn-secondary btn-sm" id="copyAgreementBtn" style="flex: 1;">📋 Copy Text</button>
+                  <button class="btn btn-primary btn-sm" id="downloadAgreementBtn" style="flex: 1;">🎉 Save Agreement</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SCREEN VIEW 5: GEMINI AI COPILOT -->
+          <div class="screen-view" id="tab-copilot-app">
+            <div class="copilot-app-container">
+              <div class="copilot-messages-box" id="copilotMessages">
+                <div class="phone-msg ai">
+                  👋 Hi! I'm your Gemini AI Relocation Copilot. What city are you moving to, and what's your target budget?
+                </div>
+              </div>
+              <div class="copilot-chips-row">
+                <button class="phone-chip-btn" onclick="askCopilot('Best safe areas in Bangalore near HSR with ₹15k budget?')">"Bangalore HSR ₹15k"</button>
+                <button class="phone-chip-btn" onclick="askCopilot('Compare average deposit in Mumbai vs Hyderabad')">"Deposit: Mumbai vs Hyd"</button>
+              </div>
+              <div class="copilot-input-bar">
+                <input type="text" id="copilotInput" placeholder="Ask AI anything about relocation..." class="phone-text-input">
+                <button id="copilotSendBtn" class="phone-send-btn">➔</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Phone Bottom Navigation Bar -->
+          <div class="phone-bottom-nav">
+            <button class="phone-nav-item active" data-app-tab="tab-swipe">
+              <span class="nav-icon">🎴</span>
+              <span class="nav-text">Match</span>
+            </button>
+            <button class="phone-nav-item" data-app-tab="tab-housing-app">
+              <span class="nav-icon">🏡</span>
+              <span class="nav-text">Housing</span>
+            </button>
+            <button class="phone-nav-item" data-app-tab="tab-events-app">
+              <span class="nav-icon">🎟️</span>
+              <span class="nav-text">Events</span>
+            </button>
+            <button class="phone-nav-item" data-app-tab="tab-agreement-app">
+              <span class="nav-icon">📝</span>
+              <span class="nav-text">Agreement</span>
+            </button>
+            <button class="phone-nav-item" data-app-tab="tab-copilot-app">
+              <span class="nav-icon">🤖</span>
+              <span class="nav-text">AI Copilot</span>
+            </button>
+          </div>
+        </div>
       </div>
 
-      <div class="dashboard-content">
-        <!-- Tab 1: AI Roommate Match -->
-        <div id="tab-match" class="tab-pane active">
-          <div class="sandbox-container">
-            <div class="sandbox-controls">
-              <div style="margin-bottom: 1.25rem; font-weight: 700; color: #fff; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center;">
-                <span>1. Set Your Preferences</span>
-                <span style="font-size: 0.75rem; background: rgba(16, 185, 129, 0.2); color: var(--primary); padding: 0.2rem 0.6rem; border-radius: 99px;">Live Algo Engine</span>
-              </div>
-              
-              <div class="control-group">
-                <label for="citySelect">Target City Hub:</label>
-                <select id="citySelect" class="select-input">
-                  <option value="bangalore" selected>📍 Bangalore (HSR / Koramangala / Indiranagar)</option>
-                  <option value="mumbai">📍 Mumbai (BKC / Andheri / Powai)</option>
-                  <option value="hyderabad">📍 Hyderabad (HITEC City / Gachibowli)</option>
-                  <option value="gurgaon">📍 Gurgaon (Cyber City / Golf Course)</option>
-                </select>
-              </div>
+      <!-- Simulator Side Explainer Panel -->
+      <div class="simulator-explainer" data-tilt="true">
+        <div class="explainer-badge">⚡ Real Mobile App Architecture</div>
+        <h3>Flutter Mobile Client + FastAPI Backend</h3>
+        <p>Cohabio combines a fast, intuitive mobile frontend with an intelligent backend algorithm that ensures you never have a bad roommate experience.</p>
 
-              <div class="control-group">
-                <label for="budgetSlider">Max Monthly Budget (₹): <span id="budgetValue">15,000</span></label>
-                <input type="range" id="budgetSlider" min="8000" max="50000" step="1000" value="15000" class="slider-input">
-              </div>
-
-              <div class="control-group">
-                <label for="cleanlinessSelect">Cleanliness Rating (1-5):</label>
-                <select id="cleanlinessSelect" class="select-input">
-                  <option value="5">5/5 — Pristine & Organized</option>
-                  <option value="4" selected>4/5 — Very Clean</option>
-                  <option value="3">3/5 — Moderate / Regular</option>
-                  <option value="2">2/5 — Relaxed</option>
-                </select>
-              </div>
-
-              <div class="control-group">
-                <label for="sleepSelect">Sleep Routine:</label>
-                <select id="sleepSelect" class="select-input">
-                  <option value="night_owl" selected>Night Owl (1am - 9am)</option>
-                  <option value="early_bird">Early Bird (10pm - 6am)</option>
-                  <option value="flexible">Flexible Schedule</option>
-                </select>
-              </div>
-
-              <div class="control-group">
-                <label for="foodSelect">Dietary Preference:</label>
-                <select id="foodSelect" class="select-input">
-                  <option value="vegetarian" selected>Vegetarian</option>
-                  <option value="non_veg">Non-Vegetarian</option>
-                  <option value="vegan">Vegan</option>
-                  <option value="any">Any / Flexible</option>
-                </select>
-              </div>
+        <div class="explainer-features-list">
+          <div class="feat-row">
+            <div class="feat-icon">🎯</div>
+            <div>
+              <strong>6-Factor Weighted Compatibility</strong>
+              <p>Budget overlap (25%), Cleanliness (20%), Sleep routine (20%), Food (15%), Location (10%), Interests (10%).</p>
             </div>
+          </div>
 
-            <!-- Live Calculated Result Card -->
-            <div class="sandbox-result-card" id="resultCard">
-              <div style="margin-bottom: 0.75rem; font-weight: 700; color: #fff; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center;">
-                <span>2. Top Match Found</span>
-                <span id="matchRankBadge" style="font-size: 0.75rem; background: rgba(14, 165, 229, 0.2); color: var(--accent); padding: 0.25rem 0.6rem; border-radius: 99px; font-weight: 700;">Rank #1 of 6 Profiles</span>
-              </div>
-              
-              <div class="match-score-container">
-                <svg class="circular-chart" viewBox="0 0 36 36">
-                  <path class="circle-bg"
-                    d="M18 2.0845
-                      a 15.9155 15.9155 0 0 1 0 31.831
-                      a 15.9155 15.9155 0 0 1 0 -31.831"
-                  />
-                  <path class="circle" id="scoreCircle"
-                    stroke-dasharray="96, 100"
-                    d="M18 2.0845
-                      a 15.9155 15.9155 0 0 1 0 31.831
-                      a 15.9155 15.9155 0 0 1 0 -31.831"
-                  />
-                  <text x="18" y="20.35" class="percentage" id="matchBadgeText">96%</text>
-                </svg>
-                <div>
-                  <div class="score-label" id="scoreLabelText">Compatibility Match</div>
-                  <small id="scoreSubText" style="color: var(--neutral-400); font-size: 0.75rem;">Based on 6 weighted factors</small>
-                </div>
-              </div>
-              
-              <div class="result-profile-header" id="profileHeader">
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200" alt="Sample Match Avatar" class="result-avatar" id="matchAvatar">
-                <div>
-                  <h3 style="font-size: 1.2rem; color: #fff;" id="matchName">Aanya Sharma, 23</h3>
-                  <p style="font-size: 0.85rem; color: var(--neutral-400);" id="matchRole">Product Designer @ Swiggy • Moving to HSR Layout</p>
-                </div>
-              </div>
-              
-              <div class="result-explanation" id="matchExplanation">
-                <strong>Why it's a match:</strong> You both share a vegetarian diet, prefer late nights, and keep things very clean. Aanya's budget also falls comfortably within your range!
-              </div>
+          <div class="feat-row">
+            <div class="feat-icon">🛡️</div>
+            <div>
+              <strong>Verified Housing Marketplace</strong>
+              <p>Every PG and flat is physically inspected or cross-verified with registered property owners. Zero brokers.</p>
+            </div>
+          </div>
 
-              <div class="result-breakdown" id="matchBreakdown">
-                <div class="breakdown-tag">✓ Budget: ₹12k - ₹16k</div>
-                <div class="breakdown-tag">✓ Cleanliness: 4/5</div>
-                <div class="breakdown-tag">✓ Routine: Night Owl</div>
-                <div class="breakdown-tag">✓ Diet: Vegetarian</div>
-                <div class="breakdown-tag">✓ Location: HSR Layout</div>
-              </div>
-              
-              <div style="margin-top: 1.25rem; display: flex; gap: 0.75rem;">
-                <button class="btn btn-primary" style="flex: 1;" id="connectBtn">
-                  Connect with Aanya 💬
-                </button>
-                <button class="btn btn-secondary" style="padding: 0.75rem 1rem; border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); color: #fff;" id="nextCandidateBtn" title="View Next Top Match">
-                  Next Match ➔
-                </button>
-              </div>
+          <div class="feat-row">
+            <div class="feat-icon">🤝</div>
+            <div>
+              <strong>Social Community Mixers</strong>
+              <p>Attend city welcome events to meet potential flatmates and make friends before signing leases.</p>
+            </div>
+          </div>
+
+          <div class="feat-row">
+            <div class="feat-icon">🤖</div>
+            <div>
+              <strong>Google Gemini 1.5 Integration</strong>
+              <p>Natural query parsing that instantly calculates accurate rental costs, transit options, and packing timelines.</p>
             </div>
           </div>
         </div>
 
-        <!-- Tab 2: Community Discovery -->
-        <div id="tab-community" class="tab-pane">
-          <div class="community-mock-container">
-            <div class="community-mock-header">
-              <h3>Bangalore Techies & Interns</h3>
-              <span class="community-mock-meta">1,420 Members • 12 Online</span>
-            </div>
-            <div class="community-mock-feed">
-              <div class="feed-post">
-                <div class="post-avatar">K</div>
-                <div class="post-content">
-                  <strong>Karan Singh</strong> <span class="post-time">2h ago</span>
-                  <p>Hey folks! Just got my offer from Flipkart. Anyone looking for a flatmate near Bellandur starting next month?</p>
-                  <div class="post-actions"><span>👍 12</span> <span>💬 4</span></div>
-                </div>
-              </div>
-              <div class="feed-post">
-                <div class="post-avatar" style="background: #a855f7;">P</div>
-                <div class="post-content">
-                  <strong>Priya R.</strong> <span class="post-time">5h ago</span>
-                  <p>Moving from Delhi this weekend. Can anyone recommend a good PG for girls in HSR Layout Sector 2?</p>
-                  <div class="post-actions"><span>👍 8</span> <span>💬 15</span></div>
-                </div>
-              </div>
-            </div>
-            <button class="btn btn-secondary" style="width: 100%; margin-top: 1rem;" onclick="alert('Join the waitlist to access real communities when we launch!');">Join Community 🚀</button>
+        <div class="explainer-cta">
+          <a href="#waitlist" class="btn btn-primary btn-shine" style="width: 100%;">
+            Get Google Play &amp; iOS Beta Invite 🚀
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VERIFIED HOUSING MARKETPLACE SECTION -->
+  <section class="housing-section" id="housing">
+    <div class="section-title">
+      <div class="section-badge">🏡 Verified Properties</div>
+      <h2>Curated Student &amp; Fresher Housing</h2>
+      <p class="section-desc">
+        Say goodbye to broker spam and hidden security deposit traps. Explore verified listings with verified roommate slots.
+      </p>
+    </div>
+
+    <div class="housing-grid" id="mainHousingGrid">
+      <!-- Injected via JS -->
+    </div>
+  </section>
+
+  <!-- CITY MIXERS & EVENTS SECTION -->
+  <section class="events-section" id="events">
+    <div class="section-title">
+      <div class="section-badge">🎟️ Community Events</div>
+      <h2>City Welcome Mixers &amp; Meetups</h2>
+      <p class="section-desc">
+        Connect with incoming freshers, college alumni, and potential flatmates in your new city.
+      </p>
+    </div>
+
+    <div class="events-grid" id="mainEventsGrid">
+      <!-- Injected via JS -->
+    </div>
+  </section>
+
+  <!-- FINANCIAL RELOCATION COST ESTIMATOR SECTION -->
+  <section class="estimator-section" id="estimator">
+    <div class="section-title">
+      <div class="section-badge">💰 Financial Planning</div>
+      <h2>City Relocation Cost &amp; Budget Estimator</h2>
+      <p class="section-desc">
+        Calculate your realistic monthly expenses, security deposit requirements, commute costs, and grocery budgets across major Indian metros.
+      </p>
+    </div>
+
+    <div class="estimator-container" data-spotlight="true">
+      <div class="estimator-controls">
+        <div class="estimator-row">
+          <div class="control-col">
+            <label for="estCity">Destination City:</label>
+            <select id="estCity" class="select-input">
+              <option value="bangalore" selected>📍 Bangalore (Tech Capital)</option>
+              <option value="mumbai">📍 Mumbai (Financial Hub)</option>
+              <option value="hyderabad">📍 Hyderabad (Cyberabad)</option>
+              <option value="gurgaon">📍 Gurgaon / Delhi NCR</option>
+              <option value="pune">📍 Pune (IT &amp; University Hub)</option>
+            </select>
+          </div>
+
+          <div class="control-col">
+            <label for="estHousing">Housing Preference:</label>
+            <select id="estHousing" class="select-input">
+              <option value="pg_shared" selected>🛏️ Shared PG (Double Sharing with Food)</option>
+              <option value="pg_single">🚪 Private Single Room in PG</option>
+              <option value="flat_2bhk_share">🏢 2 BHK Apartment (1 Private Room Split)</option>
+              <option value="flat_1bhk_solo">🔑 1 BHK Independent Flat</option>
+            </select>
           </div>
         </div>
 
-        <!-- Tab 3: Relocation Assistant -->
-        <div id="tab-assistant" class="tab-pane">
-          <div class="assistant-mock-container">
-            <div class="assistant-mock-messages" id="assistantMockMessages">
-              <div class="mock-message ai">
-                Hello! I'm your AI Relocation Assistant. Where are you moving to, and what's your budget?
-              </div>
+        <div class="estimator-row">
+          <div class="control-col">
+            <label for="estCommute">Daily Commute Mode:</label>
+            <select id="estCommute" class="select-input">
+              <option value="metro_bus" selected>🚇 Metro / Public Bus Transit</option>
+              <option value="bike">🛵 Two-Wheeler / Bike</option>
+              <option value="cab">🚖 Cabs / Auto Rides</option>
+              <option value="walk">🚶 Walk to Office / WFH</option>
+            </select>
+          </div>
+
+          <div class="control-col">
+            <label for="estLifestyle">Lifestyle &amp; Dining:</label>
+            <select id="estLifestyle" class="select-input">
+              <option value="frugal">🌱 Frugal (Cook at home, minimal outings)</option>
+              <option value="moderate" selected>☕ Moderate (Occasional dining &amp; cafes)</option>
+              <option value="premium">✨ Premium (Clubs, gym, frequent travel)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cost Breakdown Display -->
+      <div class="estimator-results">
+        <div class="results-header-summary">
+          <div>
+            <span class="est-label">Estimated Total Monthly Cost</span>
+            <div class="est-total" id="estTotalMonthly">₹22,500 <span class="per-mo">/ month</span></div>
+          </div>
+          <div class="deposit-tag">
+            <span>Estimated Upfront Deposit:</span>
+            <strong id="estUpfrontDeposit">₹30,000</strong>
+          </div>
+        </div>
+
+        <div class="cost-breakdown-grid">
+          <div class="cost-item-card" data-spotlight="true">
+            <div class="cost-icon">🏠</div>
+            <div class="cost-details">
+              <span class="cost-name">Rent &amp; Maintenance</span>
+              <strong class="cost-val" id="valRent">₹13,500</strong>
             </div>
-            <div class="assistant-mock-input">
-              <button class="suggestion-btn" onclick="simulateAssistantChat('Moving to Mumbai with a 25k budget')">"Moving to Mumbai, 25k budget"</button>
-              <button class="suggestion-btn" onclick="simulateAssistantChat('Need a PG in Bangalore under 10k')">"PG in Bangalore under 10k"</button>
+          </div>
+          <div class="cost-item-card" data-spotlight="true">
+            <div class="cost-icon">🍱</div>
+            <div class="cost-details">
+              <span class="cost-name">Food &amp; Groceries</span>
+              <strong class="cost-val" id="valFood">₹4,500</strong>
             </div>
+          </div>
+          <div class="cost-item-card" data-spotlight="true">
+            <div class="cost-icon">🚌</div>
+            <div class="cost-details">
+              <span class="cost-name">Transit / Commute</span>
+              <strong class="cost-val" id="valCommute">₹2,000</strong>
+            </div>
+          </div>
+          <div class="cost-item-card" data-spotlight="true">
+            <div class="cost-icon">⚡</div>
+            <div class="cost-details">
+              <span class="cost-name">Wifi &amp; Electricity</span>
+              <strong class="cost-val" id="valUtilities">₹1,200</strong>
+            </div>
+          </div>
+          <div class="cost-item-card" data-spotlight="true">
+            <div class="cost-icon">🎉</div>
+            <div class="cost-details">
+              <span class="cost-name">Leisure &amp; Outings</span>
+              <strong class="cost-val" id="valLeisure">₹1,300</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="neighborhood-insights">
+          <h4>📍 Top Recommended Localities for your budget:</h4>
+          <div class="neighborhood-chips" id="neighborhoodChips">
+            <!-- Injected via JS -->
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Communities Section -->
+  <!-- INTERACTIVE RELOCATION CHECKLIST SECTION -->
+  <section class="checklist-section" id="checklist">
+    <div class="section-title">
+      <div class="section-badge">📋 Moving Planner</div>
+      <h2>Interactive Relocation Checklist</h2>
+      <p class="section-desc">
+        Never forget an essential step. Track your moving timeline, check off completed tasks, and add your own custom tasks. Progress saves automatically!
+      </p>
+    </div>
+
+    <div class="checklist-container" data-spotlight="true">
+      <div class="checklist-progress-card">
+        <div class="checklist-progress-info">
+          <div>
+            <h3>Relocation Readiness Score</h3>
+            <p style="font-size: 0.88rem; color: var(--neutral-600);"><span id="checkedTasksCount">0</span> of <span id="totalTasksCount">12</span> tasks completed</p>
+          </div>
+          <div class="progress-percent" id="readinessPercent">0%</div>
+        </div>
+        <div class="checklist-progress-track">
+          <div class="checklist-progress-fill" id="readinessProgressFill" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <!-- Phase Filter Tabs -->
+      <div class="checklist-tabs">
+        <button class="checklist-tab active" data-phase="all">All Tasks</button>
+        <button class="checklist-tab" data-phase="t30">⏳ 30 Days Out</button>
+        <button class="checklist-tab" data-phase="t15">📦 15 Days Out</button>
+        <button class="checklist-tab" data-phase="t7">✈️ 7 Days Out</button>
+        <button class="checklist-tab" data-phase="t0">🔑 Moving Day</button>
+      </div>
+
+      <!-- Tasks List -->
+      <div class="checklist-list" id="checklistList">
+        <!-- Injected via JS -->
+      </div>
+
+      <!-- Add Custom Task Bar -->
+      <div class="add-task-bar">
+        <input type="text" id="customTaskInput" placeholder="Add a custom relocation task (e.g. Cancel gym membership)..." class="task-input">
+        <select id="customTaskPhase" class="task-phase-select">
+          <option value="t30">30 Days Out</option>
+          <option value="t15">15 Days Out</option>
+          <option value="t7" selected>7 Days Out</option>
+          <option value="t0">Moving Day</option>
+        </select>
+        <button class="btn btn-primary btn-sm" id="addCustomTaskBtn">+ Add Task</button>
+        <button class="btn btn-secondary btn-sm" id="resetChecklistBtn" title="Reset to defaults">↺ Reset</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNITIES SECTION -->
   <section class="communities-section" id="communities">
     <div class="section-title">
       <div class="section-badge">👥 Real Communities</div>
       <h2>Find Your Tribe, First</h2>
-      <p style="color: var(--neutral-600); margin-top: 0.75rem; max-width: 560px; margin-left: auto; margin-right: auto;">Join verified communities of people just like you — before you even land in your new city.</p>
+      <p class="section-desc">
+        Join verified communities of people moving to the same city — before you even pack your bags.
+      </p>
     </div>
-    <div class="community-grid">
-      <div class="community-card">
-        <div class="community-card-icon">🏙️</div>
-        <h3>Bangalore Techies &amp; Interns</h3>
-        <p>Students and SDE interns moving to Bangalore. Share PGs, commutes, and company referrals.</p>
-        <span class="community-meta">1,420 Members • Active Today</span>
-      </div>
-      <div class="community-card">
-        <div class="community-card-icon">🎓</div>
-        <h3>IIT &amp; IIM Freshers Network</h3>
-        <p>Connect with incoming batch mates before the semester starts. Find accommodation, groups, and mentors.</p>
-        <span class="community-meta">840 Members • Very Active</span>
-      </div>
-      <div class="community-card">
-        <div class="community-card-icon">🌆</div>
-        <h3>Mumbai Finance Professionals</h3>
-        <p>BKC, Lower Parel, Andheri — find verified flatmates working in banking, consulting, and fintech.</p>
-        <span class="community-meta">620 Members</span>
-      </div>
+
+    <div class="community-category-tabs">
+      <button class="comm-tab-btn active" data-comm-filter="all">All Communities</button>
+      <button class="comm-tab-btn" data-comm-filter="tech">💻 Tech &amp; Interns</button>
+      <button class="comm-tab-btn" data-comm-filter="college">🎓 College Alumni</button>
+      <button class="comm-tab-btn" data-comm-filter="finance">📈 Finance &amp; Consulting</button>
+      <button class="comm-tab-btn" data-comm-filter="creatives">🎨 Creatives &amp; Design</button>
+    </div>
+
+    <div class="community-grid" id="communityGrid">
+      <!-- Injected via JS -->
     </div>
   </section>
 
-  <!-- FAQ Accordion Section -->
-  <section class="faq-section" id="faq">
-    <div class="section-title">
-      <div class="section-badge">❓ FAQ</div>
-      <h2>Frequently Asked Questions</h2>
-    </div>
-    <div class="faq-accordion">
-      <details class="faq-item">
-        <summary class="faq-question">How does Cohabio find compatible people?</summary>
-        <div class="faq-answer">
-          We use a combination of verified identities and detailed lifestyle preferences to find people who match your vibe. Instead of just showing listings, we focus on the people first, ensuring you connect with roommates who share your living style.
-        </div>
-      </details>
-      <details class="faq-item">
-        <summary class="faq-question">How is compatibility calculated?</summary>
-        <div class="faq-answer">
-          Our algorithm calculates a deterministic percentage based on several weighted factors: Budget Overlap (25%), Cleanliness Rating (20%), Sleep/Work Schedule (20%), Habits/Lifestyle (15%), Food Preferences (10%), and Shared Interests/Hobbies (10%).
-        </div>
-      </details>
-      <details class="faq-item">
-        <summary class="faq-question">Can I choose my preferences?</summary>
-        <div class="faq-answer">
-          Absolutely. You have full control over your preferences. You can adjust your budget range, set your cleanliness standards, select your sleep routine, and specify dietary choices. The app will only recommend profiles that align with your settings.
-        </div>
-      </details>
-      <details class="faq-item">
-        <summary class="faq-question">Is my personal information safe?</summary>
-        <div class="faq-answer">
-          Security is our top priority. We use industry-standard encryption and do not share your private data with third parties. Profiles undergo a 2-level verification process (Email OTP & Identity Verification) to ensure a safe and trustworthy community.
-        </div>
-      </details>
-      <details class="faq-item">
-        <summary class="faq-question">Who can use Cohabio?</summary>
-        <div class="faq-answer">
-          Cohabio is primarily designed for students, fresh graduates, and young professionals who are relocating to new cities and looking for compatible roommates and verified housing options.
-        </div>
-      </details>
-      <details class="faq-item">
-        <summary class="faq-question">How does the waitlist work?</summary>
-        <div class="faq-answer">
-          By joining the waitlist, you reserve early access to the Cohabio mobile app before its official public launch. You'll receive updates, exclusive invites, and priority placement in our verified communities.
-        </div>
-      </details>
-    </div>
-  </section>
-
-  <!-- Waitlist Section -->
-  <section class="waitlist-section" id="waitlist">
-    <h2 style="font-size: 2.25rem; font-weight: 800;">Join the Cohabio Early Access</h2>
-    <p style="color: var(--neutral-400); margin-top: 0.75rem; font-size: 1.1rem;">Be among the first to experience
-      seamless, community-first relocation.</p>
+  <!-- WAITLIST SECTION WITH VIP PASS GENERATOR -->
+  <section class="waitlist-section" id="waitlist" data-spotlight="true">
+    <div class="badge shiny-badge" style="margin-bottom: 1rem;">🚀 VIP Early Access Program</div>
+    <h2 style="font-size: 2.5rem; font-weight: 800; color: #fff;">Join the Cohabio Beta Access</h2>
+    <p style="color: var(--neutral-400); margin-top: 0.75rem; font-size: 1.15rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+      Be among the first 1,000 members to unlock verified roommate matching and exclusive zero-brokerage listings.
+    </p>
 
     <form class="waitlist-form" id="waitlistForm">
       <input type="text" id="fullName" class="form-input" placeholder="Your Full Name" required>
-      <input type="email" id="email" class="form-input" placeholder="Your Email Address" required>
-      <input type="text" id="targetCity" class="form-input" placeholder="Destination City (e.g. Bangalore, Mumbai)"
-        required>
-      <button type="submit" class="btn btn-primary btn-waitlist-submit">Reserve My Spot 🚀</button>
+      <input type="email" id="email" class="form-input" placeholder="Your Work/College Email" required>
+      <input type="text" id="targetCity" class="form-input" placeholder="Destination City (e.g. Bangalore, Mumbai)" required>
+      <button type="submit" class="btn btn-primary btn-waitlist-submit btn-shine" data-magnet="true">
+        Reserve My VIP Pass 🚀
+      </button>
     </form>
     <div id="waitlistMsg" style="margin-top: 1rem; font-weight: 600; min-height: 24px;"></div>
   </section>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
@@ -587,15 +773,17 @@
           <img src="newfavicon.ico" alt="Cohabio Logo" class="logo-icon">
           <span>Cohabio</span>
         </a>
-        <p>The community-first relocation platform for students and young professionals. Find verified roommates, local communities, and AI-powered city guides.</p>
+        <p>The friendly, community-first relocation platform for students and young professionals. Find verified roommates, local communities, and AI-powered city guides.</p>
       </div>
       <div class="footer-links">
         <h5>Product</h5>
         <ul>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#communities">Communities</a></li>
+          <li><a href="#mobile-app">Live App Demo</a></li>
+          <li><a href="#housing">Housing Marketplace</a></li>
+          <li><a href="#events">City Mixers</a></li>
+          <li><a href="#estimator">Cost Estimator</a></li>
+          <li><a href="#checklist">Moving Checklist</a></li>
           <li><a href="#waitlist">Join Waitlist</a></li>
-          <li><a href="#">Download App</a></li>
         </ul>
       </div>
       <div class="footer-links">
@@ -618,7 +806,155 @@
     </div>
   </footer>
 
-  <!-- Floating AI Chatbot Container -->
+  <!-- MODAL: IT'S A MATCH CELEBRATION MODAL -->
+  <div id="matchCelebrationModal" class="modal-backdrop hidden">
+    <div class="match-popup-card" data-tilt="true">
+      <button class="modal-close-btn" id="closeMatchModalBtn">&times;</button>
+      <div class="match-badge-shine">🎉 IT'S A MATCH!</div>
+      <h2>You and <span id="matchModalCandidateName">Aanya</span> Liked Each Other</h2>
+      <p>Your compatibility score is <strong id="matchModalScoreText" style="color: #10B981;">96%</strong> based on budget, cleanliness, and lifestyle.</p>
+      <div class="match-avatars-pair">
+        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=120" alt="You" class="avatar-left">
+        <span class="match-heart-center">❤️</span>
+        <img src="" alt="Match" id="matchModalAvatar" class="avatar-right">
+      </div>
+      <div class="match-modal-actions">
+        <button class="btn btn-primary" id="openChatFromMatchBtn" style="flex: 1;">💬 Send Message Now</button>
+        <button class="btn btn-secondary" id="keepSwipingBtn">Keep Swiping</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: SCHEDULE PROPERTY VISIT MODAL -->
+  <div id="scheduleVisitModal" class="modal-backdrop hidden">
+    <div class="modal-card spotlight-card" data-spotlight="true">
+      <div class="modal-header">
+        <div>
+          <h3 style="color: #fff; font-size: 1.15rem;">Schedule Free Visit</h3>
+          <span style="font-size: 0.8rem; color: #10B981;">Direct Landlord Confirmation • Zero Brokerage</span>
+        </div>
+        <button class="modal-close-btn" id="closeVisitModalBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="visit-property-summary" id="visitPropertySummary">
+          <!-- Injected via JS -->
+        </div>
+        <form id="visitForm" class="visit-form">
+          <div class="control-group">
+            <label>Preferred Visit Date:</label>
+            <input type="date" id="visitDate" class="form-input" required>
+          </div>
+          <div class="control-group">
+            <label>Preferred Time Slot:</label>
+            <select id="visitTime" class="select-input">
+              <option value="11:00 AM">11:00 AM (Morning)</option>
+              <option value="03:00 PM" selected>03:00 PM (Afternoon)</option>
+              <option value="06:30 PM">06:30 PM (Evening after work)</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <label>Your Phone / WhatsApp Number:</label>
+            <input type="tel" id="visitPhone" placeholder="+91 98765 43210" class="form-input" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-shine" style="width: 100%; margin-top: 0.5rem;">
+            Confirm Visit Appointment 🚀
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: DIRECT CONNECT CHAT DIALOG -->
+  <div id="directConnectModal" class="modal-backdrop hidden">
+    <div class="modal-card spotlight-card" data-spotlight="true">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <img src="" id="dmAvatar" class="modal-avatar" alt="Candidate">
+          <div>
+            <h3 id="dmCandidateName" style="color: #fff; font-size: 1.15rem;">Connect with Candidate</h3>
+            <span class="online-indicator">● Active Relocator</span>
+          </div>
+        </div>
+        <button class="modal-close-btn" id="closeDmModalBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="dm-messages" id="dmChatMessages">
+          <div class="dm-bubble candidate-bubble" id="dmInitialGreeting">
+            Hey there! 👋 I saw we have a high compatibility score! Are you planning on moving soon?
+          </div>
+        </div>
+        <div class="dm-input-row">
+          <input type="text" id="dmInput" placeholder="Type a message (e.g. Yes! Moving next month)..." class="dm-text-input">
+          <button id="dmSendBtn" class="btn btn-primary btn-sm">Send ➔</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: 3D HOLOGRAPHIC VIP PASS -->
+  <div id="vipPassModal" class="modal-backdrop hidden">
+    <div class="vip-ticket-card" id="vipTicketCard" data-tilt="true">
+      <button class="modal-close-btn vip-close" id="closeVipModalBtn">&times;</button>
+      <div class="ticket-shimmer"></div>
+      <div class="ticket-header">
+        <div class="ticket-brand">
+          <img src="newfavicon.ico" alt="Cohabio" width="28">
+          <span>COHABIO VIP PASS</span>
+        </div>
+        <div class="ticket-status">EARLY ACCESS</div>
+      </div>
+      <div class="ticket-body">
+        <div class="ticket-row">
+          <div>
+            <span class="t-label">PASS HOLDER</span>
+            <strong class="t-val" id="vipHolderName">Rishi Rithesh</strong>
+          </div>
+          <div>
+            <span class="t-label">DESTINATION</span>
+            <strong class="t-val" id="vipDestination">Bangalore, IN</strong>
+          </div>
+        </div>
+        <div class="ticket-row">
+          <div>
+            <span class="t-label">TICKET #</span>
+            <strong class="t-val highlight" id="vipTicketNumber">#COHAB-0842</strong>
+          </div>
+          <div>
+            <span class="t-label">PRIORITY</span>
+            <strong class="t-val highlight">VIP FOUNDING MEMBER</strong>
+          </div>
+        </div>
+      </div>
+      <div class="ticket-footer">
+        <div class="barcode-stripe"></div>
+        <div style="display: flex; gap: 0.5rem; width: 100%;">
+          <button class="btn btn-primary btn-sm" style="flex: 1;" id="copyVipLinkBtn">📋 Copy Share Link</button>
+          <button class="btn btn-secondary btn-sm" id="downloadPassBtn">🎉 Celebrate</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REAL INTERACTIVE COMMAND PALETTE MODAL (CTRL+K / CMD+K) -->
+  <div id="commandPaletteModal" class="modal-backdrop hidden">
+    <div class="cmd-palette-card spotlight-card" data-spotlight="true">
+      <div class="cmd-input-row">
+        <svg class="cmd-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="cmdInput" placeholder="Type a tool or jump to feature (e.g. Housing, Budget, Match, Agreement)..." autocomplete="off">
+        <span class="cmd-esc-tag" id="closeCmdPaletteBtn">ESC</span>
+      </div>
+      <div class="cmd-results-list" id="cmdResultsList">
+        <!-- Results injected dynamically via JS -->
+      </div>
+      <div class="cmd-footer-hints">
+        <span><kbd>↑</kbd> <kbd>↓</kbd> Navigate</span>
+        <span><kbd>↵</kbd> Select</span>
+        <span><kbd>ESC</kbd> Close</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOATING CHATBOT CONTAINER -->
   <div id="chatbot-container" class="chatbot-container hidden">
     <div class="chatbot-header">
       <div class="chatbot-header-info">
@@ -632,22 +968,27 @@
       </div>
       <button id="chatbot-close-btn" class="chatbot-close-btn">&times;</button>
     </div>
-    
+
     <div id="chatbot-messages" class="chatbot-messages">
       <div class="message assistant-message">
-        Hi there! 👋 I'm your Cohabio AI Relocation Assistant. Ask me anything about finding verified roommates, communities, budget ranges, or housing!
+        Hi there! 👋 I'm your Cohabio AI Relocation Assistant. Ask me anything about finding verified roommates,
+        student housing, budget estimations, or safety in your target city!
       </div>
     </div>
-    
+
     <div class="chatbot-input-area">
       <input type="text" id="chatbot-input" placeholder="Ask anything about Cohabio..." autocomplete="off">
       <button id="chatbot-send-btn" class="chatbot-send-btn">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"></line>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+        </svg>
       </button>
     </div>
   </div>
-  
-  <!-- Floating Interactive Chatbot Greeting Tooltip Popup -->
+
+  <!-- FLOATING GREETING POPUP -->
   <div id="chatbot-greeting-popup" class="chatbot-greeting-popup hidden">
     <button id="close-greeting-btn" class="close-greeting-btn" aria-label="Close assistant greeting">&times;</button>
     <div class="greeting-content" id="greeting-content-trigger">
@@ -659,11 +1000,11 @@
     </div>
   </div>
 
-  <!-- Floating Back to Top Button -->
+  <!-- FLOATING BACK TO TOP BUTTON -->
   <button id="backToTopBtn" class="back-to-top-btn" aria-label="Scroll back to top">↑</button>
 
-  <!-- Floating Chatbot Trigger Button -->
-  <button id="chatbot-trigger" class="chatbot-trigger" aria-label="Open Cohabio AI Assistant">
+  <!-- FLOATING CHATBOT TRIGGER BUTTON -->
+  <button id="chatbot-trigger" class="chatbot-trigger" aria-label="Open Cohabio AI Assistant" data-magnet="true">
     <img src="newfavicon.ico" alt="Cohabio Assistant Icon" class="chatbot-trigger-icon-img">
   </button>
 
